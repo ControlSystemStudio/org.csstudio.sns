@@ -81,7 +81,7 @@
 
   <!-- CHILD MODULES -->
   <modules>
-    <!-- <module>plugins</module> -->
+    <module>plugins</module>
     <!-- <module>product</module> -->
     <module>repository</module>
   </modules>
