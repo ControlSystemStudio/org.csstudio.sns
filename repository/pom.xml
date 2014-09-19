@@ -117,14 +117,12 @@ then builds product from core, applications and SNS features
               <archiveFileName>basic-epics-${project.version}</archiveFileName>
               <attachId>basic</attachId>
             </product>
-<!--
             <product>
               <id>sns-css</id>
               <rootFolder>sns-css-${project.version}</rootFolder>
               <archiveFileName>sns-css-${project.version}</archiveFileName>
               <attachId>sns</attachId>
             </product>
- -->
           </products>
         </configuration>
         <executions>

@@ -1,5 +1,8 @@
 
+# Sometimes created
 workspace/
 
+# Output of maven
+plugins/*/target/
+features/*/target/
 repository/target/
-
