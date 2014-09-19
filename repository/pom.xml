@@ -81,20 +81,6 @@ then builds product from core, applications and SNS features
               <archiveFileName>archive-config-${project.version}</archiveFileName>
               <attachId>archive-config</attachId>
             </product>
-
-<!--
-            <product>
-              <id>basic-epics</id>
-              <rootFolder>basic-epics-${project.version}</rootFolder>
-              <archiveFileName>basic-epics-${project.version}</archiveFileName>
-              <attachId>basic</attachId>
-            </product>
-            <product>
-              <id>sns-css</id>
-              <rootFolder>sns-css-${project.version}</rootFolder>
-              <archiveFileName>sns-css-${project.version}</archiveFileName>
-              <attachId>sns</attachId>
-            </product>
             <product>
               <id>alarm-config</id>
               <rootFolder>alarm-config-${project.version}</rootFolder>
@@ -112,6 +98,20 @@ then builds product from core, applications and SNS features
               <rootFolder>alarm-notifier-${project.version}</rootFolder>
               <archiveFileName>alarm-notifier-${project.version}</archiveFileName>
               <attachId>alarm-notifier</attachId>
+            </product>
+
+<!--
+            <product>
+              <id>basic-epics</id>
+              <rootFolder>basic-epics-${project.version}</rootFolder>
+              <archiveFileName>basic-epics-${project.version}</archiveFileName>
+              <attachId>basic</attachId>
+            </product>
+            <product>
+              <id>sns-css</id>
+              <rootFolder>sns-css-${project.version}</rootFolder>
+              <archiveFileName>sns-css-${project.version}</archiveFileName>
+              <attachId>sns</attachId>
             </product>
             <product>
               <id>jms2rdb</id>
