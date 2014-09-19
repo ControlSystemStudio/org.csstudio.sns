@@ -99,6 +99,12 @@ then builds product from core, applications and SNS features
               <archiveFileName>alarm-notifier-${project.version}</archiveFileName>
               <attachId>alarm-notifier</attachId>
             </product>
+            <product>
+              <id>jms2rdb</id>
+              <rootFolder>jms2rdb-${project.version}</rootFolder>
+              <archiveFileName>jms2rdb-${project.version}</archiveFileName>
+              <attachId>jms2rdb</attachId>
+            </product>
 
 <!--
             <product>
@@ -112,12 +118,6 @@ then builds product from core, applications and SNS features
               <rootFolder>sns-css-${project.version}</rootFolder>
               <archiveFileName>sns-css-${project.version}</archiveFileName>
               <attachId>sns</attachId>
-            </product>
-            <product>
-              <id>jms2rdb</id>
-              <rootFolder>jms2rdb-${project.version}</rootFolder>
-              <archiveFileName>jms2rdb-${project.version}</archiveFileName>
-              <attachId>jms2rdb</attachId>
             </product>
             <product>
               <id>scan-server</id>
