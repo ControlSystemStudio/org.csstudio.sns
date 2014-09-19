@@ -82,7 +82,7 @@
   <!-- CHILD MODULES -->
   <modules>
     <module>plugins</module>
-    <!-- <module>product</module> -->
+    <module>features</module>
     <module>repository</module>
   </modules>
 

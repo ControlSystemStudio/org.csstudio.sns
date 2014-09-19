@@ -62,8 +62,8 @@ then builds product from core, applications and SNS features
         <artifactId>tycho-p2-director-plugin</artifactId>
         <version>${tycho.version}</version>
         <configuration>
-          <!-- List products to build
-               Details are in each *.product file.
+          <!-- Will build a product for very *.product file found,
+               but details of generated files are configured in there.
             -->
           <products>
             <product>
@@ -111,14 +111,13 @@ then builds product from core, applications and SNS features
               <archiveFileName>scan-server-${project.version}</archiveFileName>
               <attachId>scan-server</attachId>
             </product>
-
-<!--
             <product>
               <id>basic-epics</id>
               <rootFolder>basic-epics-${project.version}</rootFolder>
               <archiveFileName>basic-epics-${project.version}</archiveFileName>
               <attachId>basic</attachId>
             </product>
+<!--
             <product>
               <id>sns-css</id>
               <rootFolder>sns-css-${project.version}</rootFolder>

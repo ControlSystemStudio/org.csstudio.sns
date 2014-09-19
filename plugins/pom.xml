@@ -12,6 +12,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
+    <module>org.csstudio.basic.epics.product</module>
     <module>org.csstudio.diag.pvfields.sns</module>
     <module>org.csstudio.diag.pvutil</module>
     <module>org.csstudio.diag.pvutil.sns</module>
@@ -22,5 +23,6 @@
     <module>org.csstudio.sns.mpsbypasses</module>
     <module>org.csstudio.sns.pvnames</module>
     <module>org.csstudio.utility.chat</module>
+    <module>org.csstudio.sns.product</module>
   </modules>
 </project>
