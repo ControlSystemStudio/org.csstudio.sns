@@ -22,9 +22,10 @@ then builds product from core, applications and SNS features
 
   <build>
     <plugins>
-      <!-- Icons are in .../product/org.csstudio.basic.epics.product/icons,
+      <!-- Icons are in .../plugins/org.csstudio.basic.epics.product/icons,
            but tycho wants them in .../repository/target/products/basic-epics/org.csstudio.basic.epics.product/icons
            https://gist.github.com/briandealwis/907654 suggested an antrun copy
+       -->
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>1.7</version>
@@ -37,13 +38,13 @@ then builds product from core, applications and SNS features
                 <echo message="Copying icons into tycho target directory ${project.build.directory}" />
                 <copy verbose="false"
                   todir="${project.build.directory}/products/basic-epics">
-                  <fileset dir="${project.build.directory}/../../product">
+                  <fileset dir="${project.build.directory}/../../plugins">
                     <include name="org.csstudio.basic.epics.product/icons/**" />
                   </fileset>
                 </copy>
                 <copy
                   todir="${project.build.directory}/products/sns-css">
-                  <fileset dir="${project.build.directory}/../../product">
+                  <fileset dir="${project.build.directory}/../../plugins">
                     <include name="org.csstudio.sns.product/icons/**" />
                   </fileset>
                 </copy>
@@ -55,7 +56,6 @@ then builds product from core, applications and SNS features
           </execution>
         </executions>
       </plugin>
-       -->
 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
