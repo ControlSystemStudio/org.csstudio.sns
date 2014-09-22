@@ -9,3 +9,4 @@ repository/target/
 
 # Ignore IDE settings
 .settings/
+repository/plugin_customization.ini
