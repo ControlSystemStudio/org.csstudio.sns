@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>org.csstudio</groupId>
-  <artifactId>org.csstudio.sns.feature.optional</artifactId>
-  <version>3.2.0-SNAPSHOT</version>
+  <artifactId>org.csstudio.sns.feature.ccr.linux</artifactId>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 </project>

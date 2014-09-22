@@ -14,12 +14,7 @@
    <feature id="org.csstudio.sns.feature.pydev">
       <category name="opt"/>
    </feature>
-<!--
-   <feature id="org.csstudio.sns.feature.optional">
+   <feature id="org.csstudio.sns.feature.ccr">
       <category name="opt"/>
    </feature>
-   <feature id="org.csstudio.sns.feature.optional.linux">
-      <category name="opt"/>
-   </feature>
- -->
 </site>

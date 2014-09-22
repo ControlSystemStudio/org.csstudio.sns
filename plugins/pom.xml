@@ -21,6 +21,7 @@
     <module>org.csstudio.imagej</module>
     <module>org.csstudio.logbook.sns</module>
     <module>org.csstudio.sns.mpsbypasses</module>
+    <module>org.csstudio.mps.sns</module>
     <module>org.csstudio.sns.pvnames</module>
     <module>org.csstudio.utility.chat</module>
     <module>org.csstudio.sns.product</module>

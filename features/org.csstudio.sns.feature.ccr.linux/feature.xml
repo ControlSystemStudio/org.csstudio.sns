@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.csstudio.sns.feature.optional.linux"
+      id="org.csstudio.sns.feature.ccr.linux"
       label="Optional SNS Control Room Tools for Linux"
-      version="3.2.14.qualifier"
+      version="4.0.0.qualifier"
       provider-name="SNS, Kay Kasemir">
 
    <description>
@@ -10,7 +10,7 @@
    </description>
 
    <copyright>
-      Copyright (c) 2010 Oak Ridge National Laboratory,
+      Copyright (c) 2014 Oak Ridge National Laboratory,
 OAK RIDGE, TN, USA.
    </copyright>
 

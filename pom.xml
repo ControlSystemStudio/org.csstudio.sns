@@ -33,6 +33,10 @@
     <eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
     <!-- PyDev web site suggests http://pydev.org/updates/, which redirets to this: -->
     <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
+
+    <!-- How to handle errors -->
+    <!-- jgit.dirtyWorkingTree options: ignore, warning, error -->
+    <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
   </properties>
 
   <!-- PLUGIN REPOSITORIES -->
@@ -115,7 +119,7 @@
               .gitignore
               *.target
             </jgit.ignore>
-            <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+            <jgit.dirtyWorkingTree>${jgit.dirtyWorkingTree}</jgit.dirtyWorkingTree>
           </configuration>
         </plugin>
       </plugins> 
