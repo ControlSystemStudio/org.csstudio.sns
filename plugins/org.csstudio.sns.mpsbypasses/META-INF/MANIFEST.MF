@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MPS Bypass Info
 Bundle-SymbolicName: org.csstudio.sns.mpsbypasses;singleton:=true
-Bundle-Version: 3.2.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: Delphy Armstrong, Kay Kasemir
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit;bundle-version="4.8.2",
  org.epics.util;bundle-version="0.1.0",
  org.epics.vtype;bundle-version="2.0.0",
@@ -17,4 +17,5 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.csstudio.platform.utility.rdb;bundle-version="1.4.0",
  org.csstudio.apputil.ui;bundle-version="3.0.0",
  org.csstudio.logbook;bundle-version="3.1.0",
- org.csstudio.logbook.ui;bundle-version="3.0.0"
+ org.csstudio.logbook.ui;bundle-version="3.0.0",
+ org.csstudio.ui.util;bundle-version="3.2.0"
