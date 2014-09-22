@@ -6,3 +6,6 @@ workspace/
 plugins/*/target/
 features/*/target/
 repository/target/
+
+# Ignore IDE settings
+.settings/
