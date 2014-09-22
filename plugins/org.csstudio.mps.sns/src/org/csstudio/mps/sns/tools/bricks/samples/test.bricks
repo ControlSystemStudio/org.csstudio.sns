@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BricksDocument date="Thu Jul 20 14:49:14 EDT 2006" version="1.0.0">
+    <RootBrick>
+        <ViewNode height="80" tag="HelloDialog" width="355">
+            <ViewProxy type="javax.swing.JDialog"/>
+            <BeanProperty name="focusableWindowState" value="true"/>
+            <BeanProperty name="resizable" value="false"/>
+            <BeanProperty name="title" value="Hello"/>
+            <BeanProperty name="modal" value="true"/>
+            <BeanProperty fontName="Dialog" name="font" size="40" style="0"/>
+            <ViewNode tag="Horizontal Box">
+                <ViewProxy type="javax.swing.Box_Horizontal"/>
+                <BorderNode tag="Etched Border">
+                    <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                </BorderNode>
+                <ViewNode tag="Label">
+                    <ViewProxy type="javax.swing.JLabel"/>
+                    <BeanProperty name="text" value="Hello, World!"/>
+                    <BeanProperty alpha="255" blue="255" green="51" name="foreground" red="0"/>
+                    <BeanProperty fontName="Dialog" name="font" size="32" style="0"/>
+                </ViewNode>
+                <ViewNode tag="Horizontal Glue">
+                    <ViewProxy type="javax.swing.Box_HorizontalGlue"/>
+                </ViewNode>
+                <ViewNode tag="OkayButton">
+                    <ViewProxy type="javax.swing.JButton"/>
+                    <BeanProperty name="text" value="Okay"/>
+                </ViewNode>
+                <BorderNode tag="Etched Border">
+                    <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                </BorderNode>
+            </ViewNode>
+        </ViewNode>
+        <ViewNode height="518" tag="MainWindow" width="744">
+            <ViewProxy type="javax.swing.JFrame"/>
+            <BeanProperty name="title" value="Demo"/>
+            <ViewNode tag="Vertical Box">
+                <ViewProxy type="javax.swing.Box_Vertical"/>
+                <BorderNode tag="Etched Border">
+                    <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                </BorderNode>
+                <ViewNode tag="Tabbed Pane">
+                    <ViewProxy type="javax.swing.JTabbedPane"/>
+                    <ViewNode tag="Magnets Box">
+                        <ViewProxy type="javax.swing.Box_Vertical"/>
+                        <BeanProperty name="name" value="Magnets"/>
+                        <ViewNode tag="Scroll Pane">
+                            <ViewProxy type="javax.swing.JScrollPane"/>
+                            <BorderNode tag="Etched Border">
+                                <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                            </BorderNode>
+                            <ViewNode tag="MagnetList">
+                                <ViewProxy type="javax.swing.JList"/>
+                            </ViewNode>
+                            <BorderNode tag="Etched Border">
+                                <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                            </BorderNode>
+                        </ViewNode>
+                    </ViewNode>
+                    <ViewNode tag="SinePlot">
+                        <ViewProxy type="org.csstudio.mps.sns.tools.plot.FunctionGraphsJPanel"/>
+                        <BeanProperty name="name" value="Sine"/>
+                    </ViewNode>
+                </ViewNode>
+                <ViewNode tag="Button Box">
+                    <ViewProxy type="javax.swing.Box_Horizontal"/>
+                    <BorderNode tag="Etched Border">
+                        <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                    </BorderNode>
+                    <ViewNode tag="Horizontal Glue">
+                        <ViewProxy type="javax.swing.Box_HorizontalGlue"/>
+                    </ViewNode>
+                    <ViewNode tag="QuitButton">
+                        <ViewProxy type="javax.swing.JButton"/>
+                        <BeanProperty name="label" value="Quit"/>
+                        <BeanProperty alpha="255" blue="0" green="0" name="foreground" red="204"/>
+                    </ViewNode>
+                    <ViewNode tag="RunButton">
+                        <ViewProxy type="javax.swing.JButton"/>
+                        <BeanProperty name="text" value="Run"/>
+                        <BeanProperty alpha="255" blue="0" green="153" name="foreground" red="0"/>
+                    </ViewNode>
+                    <ViewNode tag="Panel">
+                        <ViewProxy type="javax.swing.JPanel"/>
+                        <BeanProperty height="1" name="preferredSize" width="15"/>
+                        <BeanProperty height="1" name="maximumSize" width="10"/>
+                    </ViewNode>
+                    <BorderNode tag="Etched Border">
+                        <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                    </BorderNode>
+                </ViewNode>
+                <BorderNode tag="Etched Border">
+                    <BorderProxy type="javax.swing.border.EtchedBorder"/>
+                </BorderNode>
+            </ViewNode>
+        </ViewNode>
+    </RootBrick>
+</BricksDocument>

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SNS MPS Data Browser
+Bundle-SymbolicName: org.csstudio.mps.sns;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Vendor: Dave Purcell
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit;bundle-version="4.8.2",
+ org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.ui,
+ org.eclipse.ui.views,
+ org.csstudio.apputil.ui,
+ org.csstudio.platform.libs.jdbc
+Bundle-ClassPath: extr_jars/cf-gui.jar,
+ extr_jars/dbunit-2.4.4.jar,
+ extr_jars/jmdns.jar,
+ extr_jars/xmlrpc-1.1.jar,
+ .

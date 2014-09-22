@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<dataset>
+
+  <DVC DVC_ID='System:IOC_DVC'/>
+
+  <DVC DVC_ID='System:PSC_DVC'/>
+
+  <DVC DVC_ID='System:PSI_DVC'/>
+
+  <DVC DVC_ID='System:PS_DVC'/>
+
+  <DVC DVC_ID='System:MAG_DVC'/>
+
+  <IOC_DVC DVC_ID='System:IOC_DVC'/>
+
+  <PSC_DVC DVC_ID='System:PSC_DVC'/>
+
+  <PSI_DVC DVC_ID='System:PSI_DVC'/>
+
+  <PS_DVC DVC_ID='System:PS_DVC'/>
+
+  <MAG_DVC DVC_ID='System:MAG_DVC'/>
+
+</dataset>

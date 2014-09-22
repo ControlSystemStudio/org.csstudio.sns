@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<dataset>
+
+  <JERI_USR_PROP FLTR_CONT='JUnit test filter contents.'
+    PROP_CD='FU'
+    FLTR_NM='JUnit test name'
+    FLTR_TBL='DVC'
+    USERID='TST'/>
+
+  <JERI_USR_PROP FLTR_CONT='JUnit test filter contents.'
+    PROP_CD='FP'
+    FLTR_NM='JUnit public test name'
+    FLTR_TBL='DVC'
+    USERID='TST'/>
+    
+</dataset>
