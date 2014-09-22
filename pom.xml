@@ -31,6 +31,8 @@
     <tycho.version>0.20.0</tycho.version>
     <tycho-extras.version>0.20.0</tycho-extras.version>
     <eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
+    <!-- PyDev web site suggests http://pydev.org/updates/, which redirets to this: -->
+    <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
   </properties>
 
   <!-- PLUGIN REPOSITORIES -->
@@ -54,7 +56,7 @@
     </repository>
     <repository>
       <id>pydev</id>
-      <url>http://update-production-pydev.s3.amazonaws.com/pydev/updates</url>
+      <url>${pydev-site}</url>
       <layout>p2</layout>
     </repository>  
   </repositories>
