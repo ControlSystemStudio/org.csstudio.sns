@@ -42,4 +42,21 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
    <requires>
    </requires>
 
+   <!-- Also list dependencies of PyDev which would ordinarily
+        resolved when installing PyDev, but won't be available
+        when installing org.csstudio.sns.feature.pydev without
+        general web access
+     -->
+   <plugin
+         id="org.eclipse.debug.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.debug.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
 </feature>
