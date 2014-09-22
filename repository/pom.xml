@@ -136,14 +136,13 @@ then builds product from core, applications and SNS features
               <goal>materialize-products</goal>
             </goals>
           </execution>
-          <!-- Zip the products
+          <!-- Zip the products -->
           <execution>
             <id>archive-products</id>
             <goals>
               <goal>archive-products</goal>
             </goals>
           </execution>
-            -->
         </executions>
       </plugin>
     </plugins>
