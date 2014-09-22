@@ -1,4 +1,4 @@
 cs-studio-SNS
 =============
 
-SNS specific additions, build, … for CS-Studio
+SNS specific additions and build for CS-Studio
