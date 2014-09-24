@@ -9,7 +9,7 @@
  Contributors:
     Jan Hatje - Original pom to build plug-ins
     Dylan Maxwell, Eric Berryman - org.csstudio.product pom.xml
-    Kay Kasemir - This file for org-csstudio-SNS
+    Kay Kasemir - This file for cs-studio-SNS
 -->
 <project
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
@@ -31,8 +31,10 @@
     <tycho.version>0.20.0</tycho.version>
     <tycho-extras.version>0.20.0</tycho-extras.version>
     <eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
-    <!-- PyDev web site suggests http://pydev.org/updates/, which redirets to this: -->
+    <!-- PyDev web site suggests http://pydev.org/updates/, which redirects to this: -->
     <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- How to handle errors -->
     <!-- jgit.dirtyWorkingTree options: ignore, warning, error -->
@@ -129,12 +131,12 @@
       PLUGIN CONFIGURATION
     -->
     <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <extensions>true</extensions>
-      </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-maven-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <extensions>true</extensions>
+        </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>target-platform-configuration</artifactId>
@@ -190,9 +192,7 @@
         <artifactId>tycho-compiler-plugin</artifactId>
         <version>${tycho.version}</version>
         <configuration>
-          <!--
-            Without this argument I get an error in the plugin 'org.csstudio.rap.core'
-          -->
+          <!-- Without this argument I get an error in the plugin 'org.csstudio.rap.core' -->
           <compilerArgument>-err:-forbidden</compilerArgument>
         </configuration>
       </plugin>
@@ -204,6 +204,24 @@
           <!--Some project include things that no longer exists. This should be fixed, but for now this parameter lets the build continue.-->
           <strictBinIncludes>false</strictBinIncludes>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+            <configuration>
+               <!--Some project include things that no longer exists. This should 
+                   be fixed, but for now this parameter lets the build continue. -->
+               <strictSrcIncludes>false</strictSrcIncludes>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
