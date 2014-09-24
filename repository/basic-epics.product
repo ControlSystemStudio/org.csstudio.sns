@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Css" uid="basic-epics" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="3.2.16.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Css" uid="basic-epics" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="4.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.csstudio.basic.epics.product/icons/aboutSide.png"/>
@@ -11,6 +11,7 @@ effort of several parties, including
 - BNL (Brookhaven, NY)
 - DESY (Hamburg, Germany)
 - FRIB (Lansing, MI)
+- ITER (France)
 - SNS (Oak Ridge, TN)
 
 It provides a collection of control system
@@ -26,11 +27,13 @@ See http://ics-web.sns.ornl.gov/css
 
    <launcherArgs>
       <programArgs>--launcher.defaultAction
-openFile</programArgs>
+openFile
+      </programArgs>
       <vmArgs>-Xmx1024m
 -XX:MaxPermSize=128M
 -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog
--Dorg.apache.commons.logging.simplelog.defaultlog=fatal</vmArgs>
+-Dorg.apache.commons.logging.simplelog.defaultlog=fatal
+      </vmArgs>
    </launcherArgs>
 
    <windowImages i16="/org.csstudio.basic.epics.product/icons/css16.png" i32="/org.csstudio.basic.epics.product/icons/css32.png" i48="/org.csstudio.basic.epics.product/icons/css48.png" i64="/org.csstudio.basic.epics.product/icons/css64.png" i128="/org.csstudio.basic.epics.product/icons/css128.png"/>

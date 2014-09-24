@@ -2,7 +2,7 @@
 <feature
       id="org.csstudio.sns.feature.core"
       label="Core CSS Components"
-      version="3.3.0.qualifier"
+      version="4.0.0.qualifier"
       provider-name="Kay Kasemir &lt;kasemirk@ornl.gov&gt; - SNS"
       plugin="org.csstudio.sns.product">
 
@@ -52,6 +52,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.core.resources" version="3.7.100" match="greaterOrEqual"/>
       <import plugin="org.csstudio.apputil.ui" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="com.sun.mail.javax.mail"/>
       <import plugin="org.eclipse.help" version="3.4.1" match="greaterOrEqual"/>
       <import plugin="org.csstudio.email" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.apputil.ui" version="1.1.7" match="greaterOrEqual"/>
@@ -85,13 +86,13 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.csstudio.startup.helper" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.apputil" version="3.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.csstudio.utility.pvmanager" version="2.0.0" match="greaterOrEqual"/>
-      <import plugin="org.epics.util" version="0.2.0" match="greaterOrEqual"/>
-      <import plugin="org.epics.util" version="0.2.1" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.core" version="1.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.console" version="3.3.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.ui.util" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.model.workbench" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.workbench" version="1.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.security" version="1.1.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.util" version="1.0.300" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.ds" version="1.3.1" match="greaterOrEqual"/>
@@ -100,16 +101,33 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.csstudio.logbook" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pvmanager.ui" version="3.0.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pvmanager.extra" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.csstudio.utility.pvmanager" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.csdata" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.epics.util" version="0.2.5" match="greaterOrEqual"/>
+      <import plugin="org.epics.vtype" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="org.epics.vtype" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.simplepv" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.epics.util" version="0.2.2" match="greaterOrEqual"/>
-      <import plugin="org.csstudio.utility.pvmanager" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pv" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.product" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.epics.pvdata" version="3.0.3" match="greaterOrEqual"/>
-      <import plugin="org.epics.pvaccess" version="3.0.5" match="greaterOrEqual"/>
       <import plugin="org.csstudio.platform.libs.epics" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.bridge" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.dom" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.dom.svg" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.transcoder" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.util" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.w3c.dom.svg"/>
+      <import plugin="org.apache.batik.css" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.css" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.dom" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.dom.svg" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.ext.awt" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.parser" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.util" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.util.gui" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.xml" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.bridge" version="1.7.0" match="equivalent"/>
+      <import plugin="org.apache.batik.svggen" version="1.7.0" match="equivalent"/>
    </requires>
 
    <plugin
@@ -604,6 +622,118 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.epics.pvdata"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="javax.mail"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="javax.activation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.lang"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.csstudio.utility.batik"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.bridge"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.css"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.dom"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.transcoder"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="batik"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.dom.svg"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.ext.awt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.parser"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.svggen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.batik.xml"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.google.guava"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="javaewah"
          download-size="0"
          install-size="0"
          version="0.0.0"
