@@ -154,7 +154,7 @@ then builds product from core, applications and SNS features
        and a P2 repo for installing additional features under
            cs-studio-SNS/repository/target/repository.
 
-       If a local repository is specified, the following could mirror the build repository
+       If a local repository is specified, mirror the build repository
        to that local repository
     -->
   <profiles>
@@ -162,7 +162,7 @@ then builds product from core, applications and SNS features
       <id>csstudio-local-repo-mirror</id>
       <activation>
         <property>
-          <name>TODO_TRY_THIS_LATER_csstudio.local.repo</name>
+          <name>csstudio.local.repo</name>
         </property>
       </activation>
       <build>
