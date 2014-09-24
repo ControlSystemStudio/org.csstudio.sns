@@ -1,6 +1,7 @@
 
 # Sometimes created
 workspace/
+/plugin_customization.ini
 
 # Output of maven
 plugins/*/target/
