@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Places SNS plugins and features in repository (including local mirror),
-then builds product from core, applications and SNS features
+Builds SNS products, place in local repo
 -->
 <project
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
@@ -145,6 +144,14 @@ then builds product from core, applications and SNS features
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <includeAllDependencies>true</includeAllDependencies>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -193,14 +200,6 @@ then builds product from core, applications and SNS features
               </configuration>
               </execution>
             </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>tycho-p2-repository-plugin</artifactId>
-            <version>${tycho.version}</version>
-            <configuration>
-              <includeAllDependencies>true</includeAllDependencies>
-            </configuration>
           </plugin>
         </plugins>
       </build>
