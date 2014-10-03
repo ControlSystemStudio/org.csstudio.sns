@@ -7,30 +7,47 @@
  ******************************************************************************/
 package org.csstudio.diag.pvfields.sns;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 
 @SuppressWarnings("nls")
 public class Preferences
 {
-    final public static String DEFAULT_URL = "jdbc:oracle:thin:@//myhost:1521/orcl";
-
-    public static String getURL()
+    public static String getURL() throws Exception
     {
+        return getPreference("rdb_url");
+    }
 
+    public static String getUser() throws Exception
+    {
+        return getPreference("rdb_user");
+    }
+
+    public static String getPassword() throws Exception
+    {
+        return getPreference("rdb_password");
+    }
+    
+    private static String getPreference(final String key) throws Exception
+    {
         final IPreferencesService service = Platform.getPreferencesService();
-        if (service == null)
-            return DEFAULT_URL;
-        return service.getString(Activator.ID, "rdb_url", DEFAULT_URL, null);
-    }
-
-    public static String getUser()
-    {
-        return "sns_reports";
-    }
-
-    public static String getPassword()
-    {
-        return "sns";
+        if (service != null)
+            return service.getString(Activator.ID, key, null, null);
+        // During unit tests, directly read the preference file
+        try
+        (
+            BufferedReader reader = new BufferedReader(new FileReader("preferences.ini"));
+        )
+        {
+            final String entry = key + "=";
+            String line;
+            while ((line = reader.readLine()) != null)
+                if (line.startsWith(entry))
+                    return line.substring(entry.length()).trim();
+        }
+        throw new Exception("No preferences, and cannot read file directly, either");
     }
 }
