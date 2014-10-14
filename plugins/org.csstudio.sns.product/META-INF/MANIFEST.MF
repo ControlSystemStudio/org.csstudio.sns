@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Control System Studio (SNS)
 Bundle-SymbolicName: org.csstudio.sns.product;singleton:=true
-Bundle-Version: 3.2.16.qualifier
+Bundle-Version: 4.0.0.qualifier
 Eclipse-BundleShape: dir
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.csstudio.startup.helper;bundle-version="3.0.0",
  org.csstudio.security;bundle-version="1.0.0",
  org.csstudio.security.ui;bundle-version="1.0.0"
-Bundle-Vendor: Kay Kasemir <kasemirk@ornl.gov>, Xihui Chen <chenx1@ornl.gov> - SNS
+Bundle-Vendor: Kay Kasemir <kasemirk@ornl.gov>, Xihui Chen - SNS
 Bundle-ActivationPolicy: lazy
 Eclipse-PlatformFilter: (| (osgi.ws=win32) (& (osgi.ws=cocoa)(osgi.arch=x86_64)) (osgi.ws=gtk))
 Bundle-Description: CSS for SNS users (Office, control rooms)
