@@ -11,3 +11,6 @@ The database connection is configured in the file
 src/org/csstudio/mps/sns/resources/rdb.properties
 which is handled by the code in JeriDocument#makeMainWindow()
 
+The standalone mpsbrowser.jar can be created by once running
+org.csstudio.mps.sns/src/org/csstudio/mps/sns/model/MPSModel.java
+in the Eclipse IDE, then 'Export'ing it as a runnable jar file.
