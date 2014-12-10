@@ -28,8 +28,8 @@
   <!-- PROPERTIES -->
   <properties>
     <!-- VERSIONS -->
-    <tycho.version>0.20.0</tycho.version>
-    <tycho-extras.version>0.20.0</tycho-extras.version>
+    <tycho.version>0.22.0</tycho.version>
+    <tycho-extras.version>0.22.0</tycho-extras.version>
     <eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
     <!-- PyDev web site suggests http://pydev.org/updates/, which redirects to this: -->
     <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
