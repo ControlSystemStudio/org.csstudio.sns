@@ -38,7 +38,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
      -->
    <includes
          id="org.python.pydev.feature"
-         version="3.5.0.201405201709"/>
+         version="3.6.0.201406232321"/>
 
    <requires>
    </requires>
