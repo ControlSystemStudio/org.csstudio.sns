@@ -34,10 +34,11 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
         mirror of required PyDev plugins.
         SNS beam lines etc. can then install PyDev from local repo without
         firewall problems.
+        3.9.0.201411111611 - Newer, but also has newer jython, resulting in class loader errors
      -->
    <includes
          id="org.python.pydev.feature"
-         version="3.9.0.201411111611"/>
+         version="3.5.0.201405201709"/>
 
    <requires>
    </requires>
