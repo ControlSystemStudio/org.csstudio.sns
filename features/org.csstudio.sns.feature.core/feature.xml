@@ -39,8 +39,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.help.ui"/>
-      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.junit" version="4.8.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.platform.libs.jdbc" version="1.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.0" match="greaterOrEqual"/>
@@ -85,6 +83,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.csstudio.security" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.startup.helper" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.apputil" version="3.0.1" match="greaterOrEqual"/>
+      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.hamcrest.core" version="1.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.0" match="greaterOrEqual"/>
@@ -128,6 +127,16 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.apache.batik.xml" version="1.7.0" match="equivalent"/>
       <import plugin="org.apache.batik.bridge" version="1.7.0" match="equivalent"/>
       <import plugin="org.apache.batik.svggen" version="1.7.0" match="equivalent"/>
+      <import plugin="org.csstudio.data" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.http.jetty" version="3.0.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.security" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.epics.vtype" version="2.7.1" match="greaterOrEqual"/>
+      <import plugin="org.epics.pvdata" version="3.0.3" match="greaterOrEqual"/>
+      <import plugin="org.epics.pvaccess" version="3.0.5" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
+      <import plugin="org.csstudio.utility.product" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.search"/>
    </requires>
 
    <plugin
@@ -734,6 +743,13 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="javaewah"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.csstudio.utility.file"
          download-size="0"
          install-size="0"
          version="0.0.0"
