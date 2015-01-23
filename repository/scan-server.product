@@ -7,12 +7,15 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>--launcher.suppressErrors</programArgs>
+      <programArgs>--launcher.suppressErrors
+      </programArgs>
       <vmArgs>-Djava.awt.headless=true
 -Xms10m
 -Xmx1024m
--Declipse.exitdata=</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+-Declipse.exitdata=
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
@@ -70,6 +73,8 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.epics.pvAccessJava"/>
       <plugin id="org.epics.pvDataJava"/>
+      <plugin id="org.epics.pvaccess"/>
+      <plugin id="org.epics.pvdata"/>
       <plugin id="org.epics.util"/>
       <plugin id="org.epics.vtype"/>
       <plugin id="org.hamcrest.core"/>
