@@ -29,7 +29,8 @@ See http://ics-web.sns.ornl.gov/css
       <programArgs>--launcher.defaultAction
 openFile
       </programArgs>
-      <vmArgs>-Xmx1024m
+<vmArgs>-Dosgi.requiredJavaVersion=1.8
+-Xmx1024m
 -XX:MaxPermSize=128M
 -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog
 -Dorg.apache.commons.logging.simplelog.defaultlog=fatal
