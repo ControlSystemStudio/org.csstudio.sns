@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Css" uid="basic-epics" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="4.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Css" uid="org.csstudio.basic.epics.product.product" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="4.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.csstudio.basic.epics.product/icons/aboutSide.png"/>

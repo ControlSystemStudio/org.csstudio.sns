@@ -22,7 +22,7 @@ Builds SNS products, place in local repo
   <build>
     <plugins>
       <!-- Icons are in .../plugins/org.csstudio.basic.epics.product/icons,
-           but tycho wants them in .../repository/target/products/basic-epics/org.csstudio.basic.epics.product/icons
+           but tycho wants them in .../repository/target/products/org.csstudio.basic.epics.product.product/org.csstudio.basic.epics.product/icons
            https://gist.github.com/briandealwis/907654 suggested an antrun copy
        -->
       <plugin>
@@ -36,13 +36,13 @@ Builds SNS products, place in local repo
               <target>
                 <echo message="Copying icons into tycho target directory ${project.build.directory}" />
                 <copy verbose="false"
-                  todir="${project.build.directory}/products/basic-epics">
+                  todir="${project.build.directory}/products/org.csstudio.basic.epics.product.product">
                   <fileset dir="${project.build.directory}/../../plugins">
                     <include name="org.csstudio.basic.epics.product/icons/**" />
                   </fileset>
                 </copy>
                 <copy
-                  todir="${project.build.directory}/products/sns-css">
+                  todir="${project.build.directory}/products/org.csstudio.sns.product.product">
                   <fileset dir="${project.build.directory}/../../plugins">
                     <include name="org.csstudio.sns.product/icons/**" />
                   </fileset>
@@ -111,13 +111,13 @@ Builds SNS products, place in local repo
               <attachId>scan-server</attachId>
             </product>
             <product>
-              <id>basic-epics</id>
+              <id>org.csstudio.basic.epics.product.product</id>
               <rootFolder>basic-epics-${sns.version}</rootFolder>
               <archiveFileName>basic-epics-${sns.version}</archiveFileName>
               <attachId>basic</attachId>
             </product>
             <product>
-              <id>sns-css</id>
+              <id>org.csstudio.sns.product.product</id>
               <rootFolder>sns-css-${sns.version}</rootFolder>
               <archiveFileName>sns-css-${sns.version}</archiveFileName>
               <attachId>sns</attachId>
