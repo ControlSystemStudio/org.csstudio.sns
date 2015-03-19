@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Css" uid="org.csstudio.basic.epics.product.product" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="4.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Css" uid="org.csstudio.basic.epics.product.product" id="org.csstudio.basic.epics.product.product" application="org.csstudio.basic.epics.application" version="4.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.csstudio.basic.epics.product/icons/aboutSide.png"/>
@@ -29,8 +29,10 @@ See http://ics-web.sns.ornl.gov/css
       <programArgs>--launcher.defaultAction
 openFile
       </programArgs>
-<vmArgs>-Dosgi.requiredJavaVersion=1.8
+      <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xmx1024m
+-Dorg.osgi.framework.bundle.parent=ext
+-Dosgi.framework.extensions=org.eclipse.fx.osgi
 -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog
 -Dorg.apache.commons.logging.simplelog.defaultlog=fatal
       </vmArgs>
