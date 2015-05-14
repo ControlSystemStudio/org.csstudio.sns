@@ -42,7 +42,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.csstudio.openfile" version="3.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.csstudio.logbook" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.ui.util" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.100" match="greaterOrEqual"/>
       <import plugin="org.csstudio.apputil.ui" version="3.2.0" match="greaterOrEqual"/>
@@ -97,7 +96,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.core.expressions" version="3.4.300" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.security" version="1.2.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.autocomplete" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.csstudio.logbook" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pvmanager.ui" version="3.0.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pvmanager.extra" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.csstudio.utility.pvmanager" version="3.2.0" match="greaterOrEqual"/>
@@ -172,13 +170,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.csstudio.logbook"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.csstudio.platform.libs.jdbc"
          download-size="0"
          install-size="0"
@@ -201,13 +192,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.startup"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.logbook.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -522,13 +506,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.csstudio.simplepv"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.csstudio.simplepv.pvmanager"
          download-size="0"
          install-size="0"
@@ -699,13 +676,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="javaewah"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.file"
          download-size="0"
          install-size="0"
          version="0.0.0"
