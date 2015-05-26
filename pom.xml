@@ -229,6 +229,11 @@
 
     <profile>
       <id>all_platforms</id>
+      <activation>
+        <property>
+	  <name>!specific_platform</name>
+        </property>
+      </activation>
       <build>
         <plugins>
           <plugin>
