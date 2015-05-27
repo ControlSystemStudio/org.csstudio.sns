@@ -42,6 +42,10 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.csstudio.applications.logbook.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.csstudio.archive.reader.rdb.feature"
+         version="0.0.0"/>
+
    <plugin
          id="org.csstudio.diag.epics.pvtree"
          download-size="0"
