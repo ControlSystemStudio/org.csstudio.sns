@@ -1,27 +1,28 @@
 package org.csstudio.mps.sns.tools.database;
 
-import org.csstudio.mps.sns.tools.database.DatabaseException;
-
-import java.util.*;
-import java.util.logging.*;
-
-import java.sql.*;
-
-import oracle.jdbc.pool.OracleConnectionCacheManager;
-import oracle.jdbc.pool.OracleDataSource;
-
-import oracle.sql.ARRAY;
-import oracle.sql.ArrayDescriptor;
-
-import oracle.jdbc.driver.*;
-
-import oracle.sql.BLOB;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
+import oracle.jdbc.pool.OracleDataSource;
+import oracle.sql.ARRAY;
+import oracle.sql.ArrayDescriptor;
+import oracle.sql.BLOB;
+
 
 /**
- * Provides a concrete subclass of <CODE>CachingDatabaseAdaptor</CODE> for 
+ * Provides a concrete subclass of <CODE>CachingDatabaseAdaptor</CODE> for
  * implementing methods specifically for the Oracle database.
  *
  * @author Chris Fowlkes
@@ -34,7 +35,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
    */
   private OracleDataSource dataSource;
   /**
-   * Holds the description for the adaptor. This is used by the 
+   * Holds the description for the adaptor. This is used by the
    * <CODE>toString()</CODE> method.
    */
   private String description;
@@ -43,7 +44,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
    */
   private boolean connected = false;
   /**
-   * Holds the <CODE>CachingDatabaseAdaptor</CODE> used if the first connect 
+   * Holds the <CODE>CachingDatabaseAdaptor</CODE> used if the first connect
    * fails.
    */
   private OracleCachingDatabaseAdaptor failOverDatabase;
@@ -53,9 +54,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   private boolean usingFailOver = false;
 
   /**
-	 * Public Constructor. Creates the <CODE>DataSource</CODE> and turns on 
+	 * Public Constructor. Creates the <CODE>DataSource</CODE> and turns on
    * caching.
-   * 
+   *
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
 	 */
   public OracleCachingDatabaseAdaptor() throws org.csstudio.mps.sns.tools.database.DatabaseException
@@ -76,16 +77,17 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-	 * Get a new database connection. This method will initialize the 
-   * <CODE>DataSource</CODE> if this is the first time the method has been 
+	 * Get a new database connection. This method will initialize the
+   * <CODE>DataSource</CODE> if this is the first time the method has been
    * invoked, or the URL has changed since the last time.
-   * 
+   *
 	 * @param urlSpec The URL to which to connect
 	 * @param user The user loggin into the database
 	 * @param password the user's password
 	 * @throws org.csstudio.mps.sns.tools.database.DatabaseException if a database exception is thrown
 	 */
-  public Connection getConnection(String urlSpec, String user,
+  @Override
+public Connection getConnection(String urlSpec, String user,
                                   String password) throws DatabaseException
   {
     OracleDataSource dataSource = getOracleDataSource();
@@ -100,15 +102,16 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-	 * Get a new database connection. This method will try to return a 
+	 * Get a new database connection. This method will try to return a
    * <CODE>Connection</CODE> to the database using the supplied credentials.
-   * 
+   *
 	 * @param urlSpec The URL to which to connect
 	 * @param user The user loggin into the database
 	 * @param password the user's password
 	 * @throws org.csstudio.mps.sns.tools.database.DatabaseException if a database exception is thrown
 	 */
-  public Connection getConnection(String user,
+  @Override
+public Connection getConnection(String user,
                                   String password) throws org.csstudio.mps.sns.tools.database.DatabaseException
   {
     try
@@ -129,7 +132,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
       try
       {
         CachingDatabaseAdaptor failOver = getFailOverDatabase();
-		
+
         if (connected || failOver == null)
           throw ex;
         Connection connection = failOver.getConnection(user, password);
@@ -148,7 +151,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Closes all of the connections in the cache.
-   * 
+   *
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
    */
   public void close() throws org.csstudio.mps.sns.tools.database.DatabaseException
@@ -169,13 +172,14 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Returns a <CODE>Connection</CODE> to the database using the credentials 
+   * Returns a <CODE>Connection</CODE> to the database using the credentials
    * last supplied.
-   * 
+   *
    * @return A <CODE>Connection</CODE> to the database.
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on SQL error.
    */
-  public Connection getConnection() throws DatabaseException
+  @Override
+public Connection getConnection() throws DatabaseException
   {
     try
     {
@@ -190,7 +194,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
       {
         CachingDatabaseAdaptor failOver = getFailOverDatabase();
         if (connected || failOver == null)
-        {    
+        {
           throw ex;
         }
           Connection connection = failOver.getConnection();
@@ -214,7 +218,8 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 	 * @param connection the database connection
 	 * @return a new instance of a Blob appropriate for this adaptor.
 	 */
-  public Blob newBlob(final Connection connection)
+  @Override
+public Blob newBlob(final Connection connection)
   {
     try
     {
@@ -235,7 +240,8 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 	 * @return the SQL array which wraps the primitive array
 	 * @throws org.csstudio.mps.sns.tools.database.DatabaseException if a database exception is thrown
 	 */
-  public Array getArray(String type, Connection connection,
+  @Override
+public Array getArray(String type, Connection connection,
                         Object array) throws DatabaseException
   {
     try
@@ -278,10 +284,11 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Finalizes the instance. Makes sure all connections are closed.
-   * 
+   *
    * @throws java.lang.Throwable Thrown on error.
    */
-  protected void finalize() throws Throwable
+  @Override
+protected void finalize() throws Throwable
   {
     try
     {
@@ -295,10 +302,11 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Allows the user to interact directly with the JDBC data source.
-   * 
+   *
    * @return The <CODE>DataSource</CODE> for the guven URL.
    */
-  public final DataSource getDataSource()
+  @Override
+public final DataSource getDataSource()
   {
     return getOracleDataSource();
   }
@@ -306,7 +314,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   /**
    * Allows the user to interact directly with the <CODE>OracleDataSource</CODE>
    * without having to cast.
-   * 
+   *
    * @return The <CODE>DataSource</CODE> for the guven URL.
    */
   public OracleDataSource getOracleDataSource()
@@ -318,9 +326,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Determines if the database being used is the fail over or the main 
+   * Determines if the database being used is the fail over or the main
    * database.
-   * 
+   *
    * @return <CODE>true</CODE> if the database being used is the main one, <CODE>false</CODE> if it is the fail over.
    */
   public boolean isUsingFailOver()
@@ -329,9 +337,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Gets the name of the server to which all connections using the adaptor are 
+   * Gets the name of the server to which all connections using the adaptor are
    * made.
-   * 
+   *
    * @return The name of the server to which connection are made.
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
    */
@@ -341,9 +349,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Sets the name of the server to which all connections using the adaptor are 
+   * Sets the name of the server to which all connections using the adaptor are
    * made.
-   * 
+   *
    * @param serverName The name of the server to which connection are to be made.
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
    */
@@ -355,7 +363,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   /**
    * Gets the name of the database to which all connections using the adaptor
    * are made.
-   * 
+   *
    * @return The name of the database to which connections are made.
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
    */
@@ -365,20 +373,17 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Sets the name of the database to which all connections using the adaptor
+   * Sets the name of the database service to which all connections using the adaptor
    * are made.
-   * 
-   * @return The name of the database to which connections will be made.
-   * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on database error.
    */
-  public void setDatabaseName(String databaseName)
+  public void setServiceName(String service)
   {
-    getOracleDataSource().setDatabaseName(databaseName);
+    getOracleDataSource().setServiceName(service);
   }
 
   /**
    * Gets the port number through which all database connections are made.
-   * 
+   *
    * @return The port number through which all database connections are made.
    */
   public int getPortNumber()
@@ -388,7 +393,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Sets the port number through which all database connections are made.
-   * 
+   *
    * @param portNumber The port number through which all database connections will be made.
    */
   public void setPortNumber(int portNumber)
@@ -398,7 +403,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the driver type used to create connections to the database.
-   * 
+   *
    * @return The driver type used to create connections to the database.
    */
   public String getDriverType()
@@ -408,7 +413,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Sets the driver type used to create connections to the database.
-   * 
+   *
    * @param driverType The driver type to be used to create connections to the database.
    */
   public void setDriverType(String driverType)
@@ -418,7 +423,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the user name used to connect to the database.
-   * 
+   *
    * @return The user name used to connect to the database.
    */
   public String getUser()
@@ -428,7 +433,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Sets the user name used to connect to the database.
-   * 
+   *
    * @param user The user name used to be used to connect to the database.
    */
   public void setUser(String user)
@@ -438,7 +443,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Sets the password to be used to connect to the database.
-   * 
+   *
    * @param password The password to be used to connect to the database.
    */
   public void setPassword(String password)
@@ -448,7 +453,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the URL used to create database connections.
-   * 
+   *
    * @return The URL used to connect to the database.
    * @throws org.csstudio.mps.sns.tools.database.DatabaseException Thrown on SQL error.
    */
@@ -469,7 +474,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Sets the URL used to connect to the database.
-   * 
+   *
    * @param url The URL to the database.
    */
   public void setURL(String url)
@@ -479,7 +484,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the name of the connection cache being used.
-   * 
+   *
    * @return The name of the connection cache currently being used.
    */
   public String getConnectionCacheName()
@@ -499,9 +504,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Sets the name of the connection cache to be used to obtain connaections to 
+   * Sets the name of the connection cache to be used to obtain connaections to
    * the database.
-   * 
+   *
    * @param connectionCacheName The name of the connection cache.
    */
   public void setConnectionCacheName(String connectionCacheName)
@@ -522,7 +527,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the description of the instance.
-   * 
+   *
    * @return The description of the adaptor instance.
    */
   public String getDescription()
@@ -535,7 +540,7 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * Gets the description of the instance.
-   * 
+   *
    * @param description The description of the instance.
    */
   public void setDescription(String description)
@@ -548,10 +553,11 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
 
   /**
    * returns the value of the description property if it has been set.
-   * 
+   *
    * @return The value of the description property if it has been set.
    */
-  public String toString()
+  @Override
+public String toString()
   {
     String description = getDescription();
     if (description == null)
@@ -561,9 +567,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Sets the <CODE>CachingDatabaseAdaptor</CODE> used if the first connect 
+   * Sets the <CODE>CachingDatabaseAdaptor</CODE> used if the first connect
    * attempt fails.
-   * 
+   *
    * @param failOverDatabase The <CODE>CachingDatabaseAdaptor</CODE> used if the first connect fails.
    */
   public void setFailOverDatabase(OracleCachingDatabaseAdaptor failOverDatabase)
@@ -572,9 +578,9 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   }
 
   /**
-   * Returns the <CODE>CachingDatabaseAdaptor</CODE> used of the first connect 
+   * Returns the <CODE>CachingDatabaseAdaptor</CODE> used of the first connect
    * fails.
-   * 
+   *
    * @return The <CODE>CachingDatabaseAdaptor</CODE> for the fail over database.
    */
   public OracleCachingDatabaseAdaptor getFailOverDatabase()
@@ -585,10 +591,11 @@ public class OracleCachingDatabaseAdaptor extends CachingDatabaseAdaptor
   /**
    * Returns the roles to which a user belongs. If user roles are not supported
    * by the RDB, an empty array should be returned.
-   * 
+   *
    * @return The database roles to which a user belongs.
    */
-  public String[] getUserRoles() throws org.csstudio.mps.sns.tools.database.DatabaseException
+  @Override
+public String[] getUserRoles() throws org.csstudio.mps.sns.tools.database.DatabaseException
   {
     ArrayList roles = new ArrayList();
     try

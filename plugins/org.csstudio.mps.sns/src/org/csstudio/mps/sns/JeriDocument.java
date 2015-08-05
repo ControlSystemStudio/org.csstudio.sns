@@ -1,50 +1,49 @@
 package org.csstudio.mps.sns;
 
-import org.csstudio.mps.sns.view.MPSBrowserView;
-import org.csstudio.mps.sns.application.Application;
-import org.csstudio.mps.sns.application.XalDocument;
-import org.csstudio.mps.sns.tools.database.CachingDatabaseAdaptor;
-import org.csstudio.mps.sns.tools.database.OracleCachingDatabaseAdaptor;
-import org.csstudio.mps.sns.tools.database.LoginDialog;
-import org.csstudio.mps.sns.MainFrame;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.DataSource;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import java.net.URL;
+
+import org.csstudio.mps.sns.application.XalDocument;
+import org.csstudio.mps.sns.tools.database.CachingDatabaseAdaptor;
+import org.csstudio.mps.sns.tools.database.LoginDialog;
+import org.csstudio.mps.sns.tools.database.OracleCachingDatabaseAdaptor;
+import org.csstudio.mps.sns.view.MPSBrowserView;
+
 import oracle.jdbc.pool.OracleDataSource;
 import oracle.sql.CLOB;
 
 /**
  * Provides a document for the Jeri application. This holds the connection to
- * the database and the link to the properties file that stores the user's 
+ * the database and the link to the properties file that stores the user's
  * settings.
- * 
+ *
  * @author Chris Fowlkes
  */
-public class JeriDocument extends XalDocument 
+public class JeriDocument extends XalDocument
 {
   /**
-   * Holds the name of the file used to store the application settings for the 
+   * Holds the name of the file used to store the application settings for the
    * user.
    */
   private String propertyFileName;
   /**
-   * Holds the instance of <CODE>Properties</CODE> used to store the user's 
+   * Holds the instance of <CODE>Properties</CODE> used to store the user's
    * settings.
    */
   private Properties applicationProperties;
@@ -53,12 +52,12 @@ public class JeriDocument extends XalDocument
    */
   private String title = "";
   /**
-   * Holds the <CODE>DataSource</CODE> used by the application to connect to the 
+   * Holds the <CODE>DataSource</CODE> used by the application to connect to the
    * database.
    */
   private CachingDatabaseAdaptor dataSource;
   /**
-   * A flag that determines if an insert or update statement is used to save the 
+   * A flag that determines if an insert or update statement is used to save the
    * property file to the database.
    */
   private boolean propertyFileInDatabase;
@@ -74,11 +73,11 @@ public class JeriDocument extends XalDocument
   {
     loadLocalProperties();
   }
-  
+
   /**
-   * Gets the name of the property file used by the application to save the 
+   * Gets the name of the property file used by the application to save the
    * user's settings.
-   * 
+   *
    * @return The nae of the property file used to store aplication settings for the user.
    */
   public String getPropertyFileName()
@@ -87,9 +86,9 @@ public class JeriDocument extends XalDocument
   }
 
   /**
-   * Gets the instance of <CODE>Properties</CODE> used to store the application 
+   * Gets the instance of <CODE>Properties</CODE> used to store the application
    * settings for the user.
-   * 
+   *
    * @return The instance of <CODE>Properties</CODE> containing the user's applicatin settings.
    */
   public Properties getApplicationProperties()
@@ -100,7 +99,8 @@ public class JeriDocument extends XalDocument
   /**
    * Subclasses must implement this method to make their custom main window.
    */
-  protected void makeMainWindow()
+  @Override
+protected void makeMainWindow()
   {
     LoginDialog login = new LoginDialog((JFrame)null, "MainWindow Login", true);
     int loginHeight = login.getHeight();
@@ -155,9 +155,9 @@ public class JeriDocument extends XalDocument
 //        login.setDatabase(development);
 //      else
 //        login.setDatabase(production);
-      
+
       login.setVisible(true);
-      
+
       if(login.getResult() == LoginDialog.OK)
       {
         //Attempt to load the property file from the database.
@@ -211,10 +211,10 @@ public class JeriDocument extends XalDocument
       //System.exit(1);//User clicked cancel. Exit application.
     }
   }
-  
+
   /**
    * Looks in the given property file for the given RDB connection details.
-   * 
+   *
    * @param rdbProperties The instance of <CODE>Properties</CODE> containing the property file data.
    * @param choiceIndex The index of the choice of the database.
    * @param connectionIndex The index of the connection.
@@ -236,8 +236,8 @@ public class JeriDocument extends XalDocument
     databaseKey.append("_Server_Name");
     adaptor.setServerName(rdbProperties.getProperty(databaseKey.toString()));
     databaseKey = new StringBuffer(cacheName);
-    databaseKey.append("_Database_Name");
-    adaptor.setDatabaseName(rdbProperties.getProperty(databaseKey.toString()));
+    databaseKey.append("_Service_Name");
+    adaptor.setServiceName(rdbProperties.getProperty(databaseKey.toString()));
     databaseKey = new StringBuffer(cacheName);
     databaseKey.append("_Description");
     adaptor.setDescription(rdbProperties.getProperty(databaseKey.toString()));
@@ -260,7 +260,7 @@ public class JeriDocument extends XalDocument
 
   /**
    * Attempts to load the property file from the database.
-   * 
+   *
    * @param userID The ID of the user.
    */
   private void loadPropertyFileFromDatabase(String userID)
@@ -326,43 +326,47 @@ public class JeriDocument extends XalDocument
       JOptionPane.showMessageDialog(null, message, "IO Error", JOptionPane.ERROR_MESSAGE);
     }
   }
-  
+
   /**
    * Subclasses need to implement this method for saving the document to a URL.
    * @param url The URL to which this document should be saved.
    */
-  public void saveDocumentAs(URL url)
+  @Override
+public void saveDocumentAs(URL url)
   {
   }
 
   /**
    * Gets the title of the document. This is a descriptive name of the database
    * instance to which the user is connected.
-   * 
+   *
    * @return The title for the document.
    */
-  public String getTitle()
+  @Override
+public String getTitle()
   {
     return title;
   }
 
   /**
-   * Determine whether the user should be warned when closing a document with 
-   * unsaved changes. This method returns <CODE>false</CODE> since the document 
+   * Determine whether the user should be warned when closing a document with
+   * unsaved changes. This method returns <CODE>false</CODE> since the document
    * can not be changed by the user.
-   * 
+   *
    * @return <CODE>false</CODE> since the data can not be changed by the user.
    */
-  public boolean warnUserOfUnsavedChangesWhenClosing()
+  @Override
+public boolean warnUserOfUnsavedChangesWhenClosing()
   {
     return false;
   }
 
   /**
-   * Called when the document will be closed.  This method automatically saves 
+   * Called when the document will be closed.  This method automatically saves
    * the user's application settings.
    */
-  protected void willClose()
+  @Override
+protected void willClose()
   {
     super.willClose();
     String fileName = getPropertyFileName();
@@ -377,7 +381,7 @@ public class JeriDocument extends XalDocument
         propertyFile.createNewFile();
       }//if(! propertyFile.exists())
       FileOutputStream oStream = new java.io.FileOutputStream(propertyFile);
-      applicationProperties.store(oStream, "ControlCenter property file version 1.0");      
+      applicationProperties.store(oStream, "ControlCenter property file version 1.0");
     }//try
     catch(Exception ex)
     {
@@ -448,10 +452,10 @@ public class JeriDocument extends XalDocument
       exc.printStackTrace();
     }//catch(Exception exc)
   }
-  
+
   /**
    * Gets the <CODE>DataSource</CODE> used to connect to the database.
-   * 
+   *
    * @return The <CODE>DataSource</CODE> used to connect to the database.
    */
   public CachingDatabaseAdaptor getDatabaseAdaptor()
@@ -462,7 +466,7 @@ public class JeriDocument extends XalDocument
   /**
    * Gets the value of the property file in database flag. This flag determines
    * the type of statement used to save the property file.
-   * 
+   *
    * @return <CODE>true</CODE> if the property file is in the database, <CODE>false</CODE> if not.
    */
   public boolean isPropertyFileInDatabase()
@@ -472,7 +476,7 @@ public class JeriDocument extends XalDocument
 
   /**
    * Gets the database roles the user has.
-   * 
+   *
    * @return The database roles the user has.
    */
   public String[] getRoles()
@@ -482,7 +486,7 @@ public class JeriDocument extends XalDocument
 
   /**
    * Checks to see if the current user has the given role.
-   * 
+   *
    * @param role The role for which to look.
    * @return <CODE>true</CODE> if the user has the given role, <CODE>false</CODE> otherwise.
    */
@@ -498,7 +502,7 @@ public class JeriDocument extends XalDocument
   {
 	//Use property file for application settings.
     StringBuffer fileNameBuffer = new StringBuffer(System.getProperty("user.home"));
-    
+
     String fs = System.getProperty("file.separator");
     if(! fileNameBuffer.toString().endsWith(fs))
         fileNameBuffer.append(fs);

@@ -9,8 +9,12 @@ On Mac OS X, it will not run at all.
 
 The database connection is configured in the file 
 src/org/csstudio/mps/sns/resources/rdb.properties
-which is handled by the code in JeriDocument#makeMainWindow()
+which is handled by the code in org.csstudio.mps.sns.JeriDocument#makeMainWindow()
+and JeriDocument#findAdaptor().
+
+The setup uses Service Names (originally, it used Database Names).
 
 The standalone mpsbrowser.jar can be created by once running
 org.csstudio.mps.sns/src/org/csstudio/mps/sns/model/MPSModel.java
 in the Eclipse IDE, then 'Export'ing it as a runnable jar file.
+org.csstudio.mps.sns
