@@ -28,11 +28,11 @@
   <!-- PROPERTIES -->
   <properties>
     <!-- VERSIONS -->
-    <sns.version>4.1.1</sns.version>
+    <sns.version>4.2.0</sns.version>
 
     <tycho.version>0.22.0</tycho.version>
     <tycho-extras.version>0.22.0</tycho-extras.version>
-    <eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
+    <eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
     <!-- PyDev web site suggests http://pydev.org/updates/, which redirects to this: -->
     <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
 
@@ -209,18 +209,18 @@
       <repositories>
         <repository>
           <id>csstudio-thirdparty</id>
-          <url>http://download.controlsystemstudio.org/thirdparty/4.1</url>
+          <url>http://download.controlsystemstudio.org/thirdparty/4.2</url>
           <layout>p2</layout>
         </repository>
         <repository>
           <id>csstudio-maven-osgi-bundles</id>
-          <url>http://download.controlsystemstudio.org/maven-osgi-bundles/4.1</url>
+          <url>http://download.controlsystemstudio.org/maven-osgi-bundles/4.2</url>
           <layout>p2</layout>
         </repository>
 	<!--
         <repository>
           <id>csstudio-core</id>
-          <url>http://download.controlsystemstudio.org/core/4.1</url>
+          <url>http://download.controlsystemstudio.org/core/4.2</url>
           <layout>p2</layout>
         </repository>
 	-->
@@ -251,11 +251,6 @@
                   <os>linux</os>
                   <ws>gtk</ws>
                   <arch>x86_64</arch>
-                </environment>
-                <environment>
-                  <os>win32</os>
-                  <ws>win32</ws>
-                  <arch>x86</arch>
                 </environment>
                 <environment>
                   <os>win32</os>
