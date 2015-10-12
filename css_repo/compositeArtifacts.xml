@@ -5,11 +5,12 @@
             version="1.0.0">
   <properties size="0">
   </properties>
-  <children size="4">
+  <children size="5">
     <!--
          Locations starting in file:/ refer to the root directory,
          everything else is relative to this xml file
       -->
+    <child location="../../diirt/p2/target/repository/"/>
     <child location="../../maven-osgi-bundles/repository/target/repository"/>
     <child location="../../cs-studio-thirdparty/repository/target/repository"/>
     <child location="../../cs-studio/core/p2repo"/>
