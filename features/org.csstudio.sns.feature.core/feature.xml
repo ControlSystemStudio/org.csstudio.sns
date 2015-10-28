@@ -31,6 +31,10 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <update label="SNS CSS Update Site" url="http://ics-web.sns.ornl.gov/css/updates/"/>
    </url>
 
+   <includes
+         id="org.csstudio.core.diirt.feature"
+         version="0.0.0"/>
+
    <plugin
          id="org.csstudio.platform.libs.epics"
          download-size="0"
@@ -130,13 +134,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.logging.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
