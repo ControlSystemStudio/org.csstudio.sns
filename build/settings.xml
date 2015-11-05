@@ -1,0 +1,40 @@
+<!-- Maven settings.xml
+
+     Maven settings are typically copied to ~/.m2/settings.xml
+
+    This file can be used with "mvn -s /path/to/settings.xml"
+    and relies on SRC_DIR environment variable to
+    locate the composite repo
+  -->
+<settings>
+  <profiles>
+    <profile>
+      <id>my-css-settings</id>
+      <properties>
+        <!-- Path to your composite repo -->
+        <csstudio.composite.repo>${env.SRC_DIR}/org.csstudio.sns/css_repo</csstudio.composite.repo>
+
+       <!-- Setting this property DISABLES
+            downloads from
+            download.controlsystemstudio.org,
+            so you use only your composite repo -->
+        <cs-studio>dummy_value</cs-studio>
+
+        <tycho.localArtifacts>ignore</tycho.localArtifacts>
+
+        <!-- Issue warnings instead of aborting on error -->
+        <baselineMode>warn</baselineMode>
+        <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+
+        <!-- Skip unit tests -->
+        <maven.test.skip>true</maven.test.skip>
+        <skipTests>true</skipTests>
+      </properties>
+    </profile>
+  </profiles>
+
+  <!-- Enable the above settings -->
+  <activeProfiles>
+    <activeProfile>my-css-settings</activeProfile>
+  </activeProfiles>
+</settings>
