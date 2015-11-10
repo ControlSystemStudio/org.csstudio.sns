@@ -33,10 +33,6 @@
                value="20,215,340,15">
          </property>
          <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
-         <property
             name="introTitle"
             value="Welcome to Control System Studio (CSS) for the SNS!">
          </property>
@@ -46,6 +42,10 @@
          <property
             name="introBrandingImageText"
             value="SNS CSS"/>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
    </extension>
    <extension
