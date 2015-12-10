@@ -2,7 +2,7 @@
 <feature
       id="org.csstudio.sns.feature.core"
       label="Core CSS Components"
-      version="4.0.0.qualifier"
+      version="4.0.1.qualifier"
       provider-name="Kay Kasemir &lt;kasemirk@ornl.gov&gt; - SNS"
       plugin="org.csstudio.sns.product">
 
@@ -175,13 +175,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.csstudio.utility.pvmanager"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.csstudio.java"
          download-size="0"
          install-size="0"
@@ -259,27 +252,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.csstudio.utility.pvmanager.epics"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.loc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.sim"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.csstudio.utility.test"
          download-size="0"
          install-size="0"
@@ -288,20 +260,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.epics.vtype"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.vtype"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.extra"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -385,13 +343,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.csstudio.utility.pvmanager.widgets"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.csstudio.examples"
          download-size="0"
          install-size="0"
@@ -400,13 +351,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.simplepv.pvmanager"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.ui.toolbox"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -429,27 +373,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.autocomplete.pvmanager.sys"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.sys"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.jdbc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.pva"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -604,13 +527,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.utility.file"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.utility.pvmanager.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
