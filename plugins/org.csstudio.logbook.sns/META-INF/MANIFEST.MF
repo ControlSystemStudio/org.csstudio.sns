@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SNS Elog
 Bundle-SymbolicName: org.csstudio.logbook.sns;singleton:=true
-Bundle-Version: 3.2.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.csstudio.logbook.sns.Activator
 Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.core.runtime,
@@ -10,8 +10,8 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.csstudio.platform.libs.jdbc;bundle-version="1.3.0",
  org.csstudio.platform.utility.rdb;bundle-version="1.6.0",
  org.csstudio.utility.test;bundle-version="1.0.0";resolution:=optional,
- org.epics.util;bundle-version="0.2.2"
+ org.diirt.util;bundle-version="3.0.1"
 Bundle-ClassPath: .
 Bundle-Vendor: Kay Kasemir <kasemirk@ornl.gov> - SNS
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.csstudio.logbook.sns

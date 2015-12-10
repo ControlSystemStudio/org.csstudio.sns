@@ -25,8 +25,8 @@ import org.csstudio.logbook.sns.elog.ELog;
 import org.csstudio.logbook.sns.elog.ELogEntry;
 import org.csstudio.logbook.sns.elog.ELogPriority;
 import org.csstudio.logbook.util.LogEntrySearchUtil;
-import org.epics.util.time.TimeInterval;
-import org.epics.util.time.TimeParser;
+import org.diirt.util.time.TimeInterval;
+import org.diirt.util.time.TimeParser;
 
 /** {@link LogbookClient} for SNS 'ELog'
  *  @author ky9
@@ -57,7 +57,7 @@ public class SNSLogbookClient implements LogbookClient
         this.user = user;
         this.password = password;
     }
-    
+
     /** {@inheritDoc} */
     @Override
     public Collection<Logbook> listLogbooks() throws Exception
@@ -70,7 +70,7 @@ public class SNSLogbookClient implements LogbookClient
             return Converter.convertLogbooks(elog.getLogbooks());
         }
     }
-    
+
     /** {@inheritDoc} */
     @Override
     public List<String> listLevels() throws Exception
@@ -181,10 +181,10 @@ public class SNSLogbookClient implements LogbookClient
 
         if (entry.getLogbooks().isEmpty())
             throw new Exception("No logbook specified");
-        
+
         final Iterator<Logbook> logbooks = entry.getLogbooks().iterator();
         String logbook = logbooks.next().getName();
-        
+
         final long id;
         try
         (
@@ -192,18 +192,18 @@ public class SNSLogbookClient implements LogbookClient
         )
         {
             id = elog.createEntry(logbook, title, text, ELogPriority.forName(entry.getLevel()));
-        
+
             // Attach to multiple logbooks?
             while (logbooks.hasNext())
             {
                 logbook = logbooks.next().getName();
                 elog.addLogbook(id, logbook);
             }
-            
+
             // Add optional tags
             for (Tag tag : entry.getTags())
                 elog.addCategory(id, tag.getName());
-            
+
             // Add optional attachments
             for (Attachment attachment : entry.getAttachment())
             {
@@ -212,7 +212,7 @@ public class SNSLogbookClient implements LogbookClient
                 if (stream != null)
                     elog.addAttachment(id, name, name, stream);
             }
-            
+
             // API requires returning the entry as actually written...
             return findLogEntry(id);
         }
@@ -231,12 +231,12 @@ public class SNSLogbookClient implements LogbookClient
 
         // Replace more than 2 newlines with just 2 to avoid too many empty lines
         text = text.replaceAll("\n{2,}", "\n\n");
-        
+
         final int nl = text.indexOf("\n");
         if (nl < 0)
             // No title. Use the text for both title and body
             return new String[] { text, text };
-        
+
         // Extract title
         String title = text.substring(0, nl).trim();
         String body = text.substring(nl+1).trim();
