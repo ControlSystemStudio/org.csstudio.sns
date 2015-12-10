@@ -11,7 +11,7 @@ import org.junit.Test;
  *  @author Kay Kasemir
  */
 @SuppressWarnings("nls")
-public class MachineModeMonitorHeadlessTest implements MachineModeListener
+public class MachineModeUnitTest implements MachineModeListener
 {
     final private CountDownLatch done = new CountDownLatch(1);
 
@@ -26,6 +26,7 @@ public class MachineModeMonitorHeadlessTest implements MachineModeListener
 	@Test
 	public void testMachineModeMonitor() throws Exception
 	{
+	    Setup.setup();
 		final MachineModeMonitor mm = new MachineModeMonitor(this);
 		mm.start();
 		done.await(5, TimeUnit.SECONDS);

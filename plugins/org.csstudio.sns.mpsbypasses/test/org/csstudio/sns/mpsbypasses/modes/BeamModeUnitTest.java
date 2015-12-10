@@ -11,7 +11,7 @@ import org.junit.Test;
  *  @author Kay Kasemir
  */
 @SuppressWarnings("nls")
-public class BeamMonitorHeadlessTest implements BeamModeListener
+public class BeamModeUnitTest implements BeamModeListener
 {
     final private CountDownLatch done = new CountDownLatch(1);
 
@@ -26,6 +26,7 @@ public class BeamMonitorHeadlessTest implements BeamModeListener
 	@Test
 	public void testBeamModeMonitor() throws Exception
 	{
+        Setup.setup();
 		final BeamModeMonitor mm = new BeamModeMonitor(this);
 		mm.start();
 		done.await(5, TimeUnit.SECONDS);

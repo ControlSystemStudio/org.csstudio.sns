@@ -1,20 +1,14 @@
 package org.csstudio.sns.mpsbypasses.modes;
 
-import static org.epics.pvmanager.ExpressionLanguage.*;
-import static org.epics.pvmanager.vtype.ExpressionLanguage.vEnum;
-
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.epics.pvmanager.PVManager;
-import org.epics.pvmanager.PVReader;
-import org.epics.pvmanager.PVReaderEvent;
-import org.epics.pvmanager.PVReaderListener;
-import org.epics.vtype.VEnum;
-import org.epics.pvmanager.expression.DesiredRateExpressionList;
-import org.epics.pvmanager.expression.DesiredRateExpressionListImpl;
-import org.epics.util.time.TimeDuration;
+import org.csstudio.vtype.pv.PV;
+import org.csstudio.vtype.pv.PVListener;
+import org.csstudio.vtype.pv.PVListenerAdapter;
+import org.csstudio.vtype.pv.PVPool;
+import org.diirt.vtype.VEnum;
+import org.diirt.vtype.VType;
 
 /** Read machine mode from MPS PVs
  *
@@ -24,13 +18,19 @@ import org.epics.util.time.TimeDuration;
 @SuppressWarnings("nls")
 public class MachineModeMonitor
 {
-    final private Logger logger = Logger.getLogger(getClass().getName());
+    private final Logger logger = Logger.getLogger(getClass().getName());
 
-    final private MachineMode[] modes = MachineMode.values();
-    final private MachineModeListener listener;
+    private final MachineMode[] modes = MachineMode.values();
+    private final MachineModeListener listener;
 
-	private PVReader<List<VEnum>> rtdl_reader;
-	private PVReader<List<VEnum>> switch_reader;
+    private final PV[] rtdl_pv = new PV[modes.length-1];
+    private final PV[] switch_pv = new PV[modes.length-1];
+
+    private final PVListener[] rtdl_listener = new PVListener[modes.length-1];
+    private final PVListener[] switch_listener = new PVListener[modes.length-1];
+
+    private final VEnum[] rtdl_value = new VEnum[modes.length-1];
+    private final VEnum[] switch_value = new VEnum[modes.length-1];
 
 	private volatile MachineMode rtdl_mode = null;
 	private volatile MachineMode switch_mode = null;
@@ -49,56 +49,64 @@ public class MachineModeMonitor
 	public void start() throws Exception
 	{
         // Handle 'RTDL' PVs
-        DesiredRateExpressionList<VEnum> channels = new DesiredRateExpressionListImpl<VEnum>();
         for (int i=1; i<modes.length; ++i)
-            channels.and(latestValueOf(vEnum("ICS_MPS:RTDL_MachMd:" + modes[i].name())));
-	    PVReaderListener<List<VEnum>> listener = new PVReaderListener<List<VEnum>>()
         {
-            @Override
-	        public void pvChanged(final PVReaderEvent<List<VEnum>> event)
+            final int pv_i = i-1;
+            rtdl_listener[pv_i] = new PVListenerAdapter()
             {
-                final MachineMode mode;
-                final Exception error = rtdl_reader.lastException();
-                if (error != null)
+                @Override
+                public void valueChanged(PV pv, VType value)
                 {
-                    logger.log(Level.WARNING, "RTDL Reader Error", error);
-                    mode = null;
+                    if (value instanceof VEnum)
+                    {
+                        rtdl_value[pv_i] = (VEnum) value;
+                        final MachineMode mode = getSelectedMode(rtdl_value, 1);
+                        logger.log(Level.FINE, "RTDL Mode: {0}", mode);
+                        updateModes(mode, switch_mode);
+                    }
                 }
-                else if (! event.getPvReader().isConnected())
-                    mode = null;
-                else
-                    mode = getSelectedMode(rtdl_reader.getValue(), 1);
-                logger.log(Level.FINE, "RTDL Mode: {0}", mode);
-                updateModes(mode, switch_mode);
-            }
-        };
-        rtdl_reader = PVManager.read(listOf(channels)).readListener(listener).maxRate(TimeDuration.ofSeconds(1.0));
+
+                @Override
+                public void disconnected(PV pv)
+                {
+                    logger.log(Level.WARNING, "Disconnected: ", pv.getName());
+                    rtdl_value[pv_i] = null;
+                    updateModes(null, switch_mode);
+                }
+            };
+            rtdl_pv[pv_i] = PVPool.getPV("ICS_MPS:RTDL_MachMd:" + modes[i].name());
+            rtdl_pv[pv_i].addListener(rtdl_listener[pv_i]);
+        }
 
         // Handle 'Switch' PVs
-        channels = new DesiredRateExpressionListImpl<VEnum>();
         for (int i=1; i<modes.length; ++i)
-            channels.and(latestValueOf(vEnum("ICS_MPS:Switch_MachMd:" + modes[i].name())));
-        listener = new PVReaderListener<List<VEnum>>()
         {
-            @Override
-            public void pvChanged(final PVReaderEvent<List<VEnum>> event)
+            final int pv_i = i-1;
+            switch_listener[pv_i] = new PVListenerAdapter()
             {
-                final MachineMode mode;
-                final Exception error = switch_reader.lastException();
-                if (error != null)
+                @Override
+                public void valueChanged(PV pv, VType value)
                 {
-                    logger.log(Level.WARNING, "Switch Reader Error", error);
-                    mode = null;
+                    if (value instanceof VEnum)
+                    {
+                        switch_value[pv_i] = (VEnum) value;
+                        final MachineMode mode = getSelectedMode(switch_value, 0);
+                        logger.log(Level.FINE, "Switch Mode: {0}", mode);
+                        updateModes(rtdl_mode, mode);
+                    }
                 }
-                else if (! event.getPvReader().isConnected())
-                    mode = null;
-                else
-                    mode = getSelectedMode(switch_reader.getValue(), 0);
-                logger.log(Level.FINE, "Switch Mode: {0}", mode);
-                updateModes(rtdl_mode, mode);
-            }
-        };
-        switch_reader = PVManager.read(listOf(channels)).readListener(listener).maxRate(TimeDuration.ofSeconds(1.0));
+
+                @Override
+                public void disconnected(PV pv)
+                {
+                    logger.log(Level.WARNING, "Disconnected: ", pv.getName());
+                    switch_value[pv_i] = null;
+                    updateModes(rtdl_mode, null);
+                }
+            };
+            switch_pv[pv_i] = PVPool.getPV("ICS_MPS:Switch_MachMd:" + modes[i].name());
+            switch_pv[pv_i].addListener(switch_listener[pv_i]);
+        }
 	}
 
 	/** Determine which of the values indicates an active mode
@@ -106,18 +114,22 @@ public class MachineModeMonitor
      *  @param active_value Value that indicates the active mode
      *  @return Selected {@link MachineMode} or <code>null</code>
      */
-    private MachineMode getSelectedMode(final List<VEnum> values, final int active_value)
+    private MachineMode getSelectedMode(final VEnum[] values, final int active_value)
     {
         if (values == null)
             return null;
 
-        if (values.size() != modes.length-1)
+        if (values.length != modes.length-1)
             throw new IllegalStateException();
 
         int active = -1;
         for (int i=1; i<modes.length; ++i)
         {
-            if (values.get(i-1).getIndex() == active_value)
+            final VEnum value = values[i-1];
+            // At least one disconnected PV -> state not known
+            if (value == null)
+                return null;
+            if (value.getIndex() == active_value)
             {
                 if (active >= 0)
                 {
@@ -140,8 +152,14 @@ public class MachineModeMonitor
 	/** Disconnect PVs */
 	public void stop()
 	{
-        switch_reader.close();
-        rtdl_reader.close();
+	    for (int i=0; i < switch_pv.length; ++i)
+	    {
+	        switch_pv[i].removeListener(switch_listener[i]);
+	        PVPool.releasePV(switch_pv[i]);
+
+	        rtdl_pv[i].removeListener(rtdl_listener[i]);
+            PVPool.releasePV(rtdl_pv[i]);
+	    }
 		updateModes(null, null);
 	}
 

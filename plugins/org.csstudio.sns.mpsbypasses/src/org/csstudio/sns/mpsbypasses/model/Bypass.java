@@ -1,18 +1,15 @@
 package org.csstudio.sns.mpsbypasses.model;
 
-import static org.epics.pvmanager.vtype.ExpressionLanguage.vType;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.epics.pvmanager.PVManager;
-import org.epics.pvmanager.PVReader;
-import org.epics.pvmanager.PVReaderEvent;
-import org.epics.pvmanager.PVReaderListener;
-import org.epics.vtype.VEnum;
-import org.epics.vtype.VNumber;
-import org.epics.vtype.VType;
-import org.epics.util.time.TimeDuration;
+import org.csstudio.vtype.pv.PV;
+import org.csstudio.vtype.pv.PVListener;
+import org.csstudio.vtype.pv.PVListenerAdapter;
+import org.csstudio.vtype.pv.PVPool;
+import org.diirt.vtype.VEnum;
+import org.diirt.vtype.VNumber;
+import org.diirt.vtype.VType;
 
 /** Info about one Bypass
  *
@@ -40,7 +37,7 @@ public class Bypass
 	final private Request request;
 	final private BypassListener listener;
 
-	private PVReader<VType> jumper_pv, mask_pv;
+	private PV jumper_pv, mask_pv;
     private volatile VType jumper, mask;
 	private volatile BypassState state = BypassState.Disconnected;
 
@@ -140,47 +137,48 @@ public class Bypass
 		return state;
 	}
 
+	PVListener jumper_pv_listener = new PVListenerAdapter()
+    {
+        @Override
+        public void valueChanged(PV pv, VType value)
+        {
+            updateState(value, mask);
+        }
+
+        @Override
+        public void disconnected(PV pv)
+        {
+            logger.log(Level.WARNING, "Jumper PV Disconnected: " + pv.getName());
+            updateState(null, mask);
+        }
+    };
+
+    PVListener mask_pv_listener = new PVListenerAdapter()
+    {
+        @Override
+        public void valueChanged(PV pv, VType value)
+        {
+            updateState(jumper, value);
+        }
+
+        @Override
+        public void disconnected(PV pv)
+        {
+            logger.log(Level.WARNING, "Mask PV Disconnected: " + pv.getName());
+            updateState(jumper, null);
+        }
+    };
+
 	/** Connect to PVs */
 	public void start() throws Exception
 	{
 		if (pv_basename == null)
 			return;
 
-		PVReaderListener<VType> listener = new PVReaderListener<VType>()
-        {
-            @Override
-            public void pvChanged(final PVReaderEvent<VType> event)
-            {
-            	final PVReader<VType> pv = event.getPvReader();
-                final Exception error = pv.lastException();
-                if (error != null)
-                {
-                    logger.log(Level.WARNING, "Jumper PV Error", error);
-                    updateState(null, mask);
-                }
-                else
-                    updateState(pv.getValue(), mask);
-            }
-        };
-		jumper_pv = PVManager.read(vType(pv_basename + "_sw_jump_status")).readListener(listener).maxRate(TimeDuration.ofSeconds(0.5));
-
-		listener = new PVReaderListener<VType>()
-        {
-            @Override
-            public void pvChanged(PVReaderEvent<VType> event)
-            {
-            	final PVReader<VType> pv = event.getPvReader();
-                final Exception error = pv.lastException();
-                if (error != null)
-                {
-                    logger.log(Level.WARNING, "Mask PV Error", error);
-                    updateState(jumper, null);
-                }
-                else
-                    updateState(jumper, pv.getValue());
-            }
-        };
-		mask_pv = PVManager.read(vType(pv_basename + "_swmask")).readListener(listener).maxRate(TimeDuration.ofSeconds(0.5));
+		jumper_pv = PVPool.getPV(pv_basename + "_sw_jump_status");
+		jumper_pv.addListener(jumper_pv_listener);
+		mask_pv = PVPool.getPV(pv_basename + "_swmask");
+		mask_pv.addListener(mask_pv_listener);
 	}
 
 	/** Disconnect PVs */
@@ -188,8 +186,10 @@ public class Bypass
 	{
 		if (pv_basename == null)
 			return;
-		jumper_pv.close();
-		mask_pv.close();
+		mask_pv.removeListener(mask_pv_listener);
+		jumper_pv.removeListener(jumper_pv_listener);
+		PVPool.releasePV(jumper_pv);
+		PVPool.releasePV(mask_pv);
 
 		state = BypassState.Disconnected;
 		// Does NOT notify listener

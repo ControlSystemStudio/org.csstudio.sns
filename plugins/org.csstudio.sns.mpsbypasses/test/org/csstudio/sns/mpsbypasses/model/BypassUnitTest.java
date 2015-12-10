@@ -1,13 +1,13 @@
 package org.csstudio.sns.mpsbypasses.model;
 
-import static org.epics.pvmanager.ExpressionLanguage.channel;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 
-import org.epics.pvmanager.PVManager;
-import org.epics.pvmanager.PVWriter;
-import org.epics.pvmanager.loc.LocalDataSource;
+import org.csstudio.vtype.pv.PV;
+import org.csstudio.vtype.pv.PVFactory;
+import org.csstudio.vtype.pv.PVPool;
+import org.csstudio.vtype.pv.local.LocalPVFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +20,9 @@ public class BypassUnitTest implements BypassListener
     @Before
     public void setup()
     {
-        PVManager.setDefaultDataSource(new LocalDataSource());
+        final PVFactory local = new LocalPVFactory();
+        PVPool.addPVFactory(local);
+        PVPool.setDefaultType(local.getType());
     }
 
 	@Override
@@ -49,8 +51,8 @@ public class BypassUnitTest implements BypassListener
 		info.start();
 
         // Local PVs to simulate the MPS PVs
-        final PVWriter<Object> jumper = PVManager.write(channel("loc://Test_Sys:Bypass1:FPLX_sw_jump_status")).sync();
-        final PVWriter<Object> mask = PVManager.write(channel("loc://Test_Sys:Bypass1:FPLX_swmask")).sync();
+        final PV jumper = PVPool.getPV("loc://Test_Sys:Bypass1:FPLX_sw_jump_status");
+        final PV mask = PVPool.getPV("loc://Test_Sys:Bypass1:FPLX_swmask");
 
         // Simulate Bypassed
         jumper.write(1);
@@ -78,6 +80,9 @@ public class BypassUnitTest implements BypassListener
 		mask.write(0);
 		Thread.sleep(1000);
 		assertEquals(BypassState.Disconnected, info.getState());
+
+		PVPool.releasePV(mask);
+		PVPool.releasePV(jumper);
 	}
 
     private void waitForState(final Bypass info, final BypassState desired) throws InterruptedException
