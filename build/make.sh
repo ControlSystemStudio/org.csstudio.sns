@@ -1,3 +1,19 @@
+# Build all the SNS products
+#
+# Requires that these repositories have all been checked out from https://github.com/ControlSystemStudio
+# into the same parent directory:
+#
+#   for repo in diirt maven-osgi-bundles cs-studio-thirdparty cs-studio org.csstudio.sns
+#   do
+#        git clone https://github.com/ControlSystemStudio/${repo}.git
+#   done
+#
+#
+# In addition, the environment varaibles shown in setup.sh need to be set.
+#
+# Invoking this file will then build CSS using local maven settings.xml
+# and a P2 composite repo built as a result of compiling diirt etc. locally.
+
 if [ ! -x "$JAVA_HOME/bin/java" ]
 then
     echo "Missing JAVA_HOME"
