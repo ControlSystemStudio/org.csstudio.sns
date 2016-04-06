@@ -9,5 +9,10 @@ features/*/target/
 repository/target/
 
 # Ignore IDE settings
+.project
+.classpath
 .settings/
 repository/plugin_customization.ini
+
+# Custom setups
+build/setup_laptop.sh
