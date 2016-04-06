@@ -7,10 +7,10 @@
  ******************************************************************************/
 package org.csstudio.logbook.sns;
 
-import static org.csstudio.utility.test.HamcrestMatchers.greaterThan;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,7 +50,7 @@ public class ELogReadUnitTest
     {
         final List<String> logbooks = elog.getLogbooks();
         System.out.println(logbooks);
-        assertThat(logbooks.size(), greaterThan(0));
+        assertTrue(logbooks.size() > 0);
     }
     
     @Test //(timeout=10000)
@@ -74,7 +74,7 @@ public class ELogReadUnitTest
                     entry.getUser(),
                     entry.getTitle(),
                     shorten(entry.getText().replaceAll("[\r\n]", " ")));
-        assertThat(entries.size(), greaterThan(0));
+        assertTrue(entries.size() > 0);
    }
 
     private static String shorten(final String text)
