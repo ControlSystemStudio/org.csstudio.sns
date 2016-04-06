@@ -7,9 +7,9 @@
  ******************************************************************************/
 package org.csstudio.sns.pvnames;
 
-import static org.csstudio.utility.test.HamcrestMatchers.greaterThan;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -53,7 +53,7 @@ public class SNSPVListProviderUnitTest
 		AutoCompleteResult pvs = provider.listResult(cd, 10);
         System.out.println("Matching PVs: " + pvs.getCount());
         System.out.println(pvs.getProposalsAsString());
-        assertThat(pvs.getCount(), greaterThan(1));
+        assertTrue(pvs.getCount() > 1);
         assertThat(pvs.getProposalsAsString().contains("DTL_LLRF:IOC1:Load"), equalTo(true));
     }
 }
