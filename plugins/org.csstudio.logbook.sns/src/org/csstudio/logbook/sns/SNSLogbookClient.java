@@ -8,6 +8,7 @@
 package org.csstudio.logbook.sns;
 
 import java.io.InputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -161,7 +162,7 @@ public class SNSLogbookClient implements LogbookClient
         )
         {
             final List<ELogEntry> entries = elog.getEntries(
-                interval.getStart().toDate(), interval.getEnd().toDate());
+                Date.from(interval.getStart()), Date.from(interval.getEnd()));
             result = new ArrayList<>(entries.size());
             for (ELogEntry entry : entries)
                 result.add(new SNSLogEntry(entry));
