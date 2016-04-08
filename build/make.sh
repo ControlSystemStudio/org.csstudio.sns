@@ -55,15 +55,15 @@ TOP=`pwd`
 # rm -rf ~/.m2/repository
 rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.log 4_applications.log 5_sns.log
 
-# (cd diirt; time  mvn $OPTS ) | tee 0_diirt.log
+(cd diirt; time  mvn $OPTS ) | tee 0_diirt.log
 
-# (cd maven-osgi-bundles; time  mvn $OPTS ) | tee 1_maven-osgi-bundles.log
+(cd maven-osgi-bundles; time  mvn $OPTS ) | tee 1_maven-osgi-bundles.log
 
-# (cd cs-studio-thirdparty; time  mvn $OPTS ) | tee 2_cs-studio-thirdparty.log
+(cd cs-studio-thirdparty; time  mvn $OPTS ) | tee 2_cs-studio-thirdparty.log
 
-# (cd cs-studio/core; time  mvn $OPTS ) | tee 3_core.log
+(cd cs-studio/core; time  mvn $OPTS ) | tee 3_core.log
 
-# (cd cs-studio/applications; time  mvn $OPTS ) | tee 4_applications.log
+(cd cs-studio/applications; time  mvn $OPTS ) | tee 4_applications.log
 
 (cd org.csstudio.sns; time  mvn $OPTS ) | tee 5_sns.log
 
