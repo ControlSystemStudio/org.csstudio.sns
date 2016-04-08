@@ -2,6 +2,7 @@
 # Sometimes created
 workspace/
 /plugin_customization.ini
+.DS_Store
 
 # Output of maven
 plugins/*/target/
@@ -16,3 +17,4 @@ repository/plugin_customization.ini
 
 # Custom setups
 build/setup_laptop.sh
+
