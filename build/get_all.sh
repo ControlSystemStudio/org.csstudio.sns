@@ -4,7 +4,7 @@ do
   if [ -d $i ]
   then
     echo "==== Updating $i ===="
-    (cd $i; git pull)
+    (cd $i; git pull; git branch)
   else
     echo "==== Fetching $i ===="
     git clone $GH/$i
