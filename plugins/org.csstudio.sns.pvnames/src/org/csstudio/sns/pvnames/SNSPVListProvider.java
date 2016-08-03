@@ -25,7 +25,7 @@ import org.csstudio.autocomplete.proposals.ProposalStyle;
 import org.csstudio.platform.utility.rdb.RDBCache;
 
 /** PV Name lookup for SNS 'signal' database
- * 
+ *
  *  <p>AutoCompleteService will re-use one instance of this class
  *  for all lookups, calling <code>listResult</code> whenever
  *  the user types a new character, using a new thread for each lookup.
@@ -33,45 +33,65 @@ import org.csstudio.platform.utility.rdb.RDBCache;
  *  This means there are never multiple concurrent lookups started on purpose,
  *  but a previously started lookup may still continue in its thread
  *  in case <code>cancel()</code> has no immediate effect.
- *  
+ *
  *  @author Kay Kasemir
  */
 @SuppressWarnings("nls")
 public class SNSPVListProvider implements IAutoCompleteProvider
 {
+    private static final Logger logger = Logger.getLogger(SNSPVListProvider.class.getName());
+
     /** Cached RDB connection */
     private RDBCache cache = null;
-    
+
     /** Currently executed statement.
      *  SYNC on this for access
      */
     private PreparedStatement current_statement = null;
-    
-    private synchronized void setCurrentStatement(final PreparedStatement statement)
+    private String current_pattern = "";
+
+    private synchronized void setCurrentStatement(final PreparedStatement statement, final String pattern)
     {
         current_statement = statement;
+        current_pattern = pattern;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean accept(final ContentType type)
 	{
-		if (type == ContentType.PVName)
-			return true;
-		return false;
+	    logger.log(Level.FINE, "Accept {0}?", type);
+	    return type == ContentType.PVName ||
+		       type == ContentType.PV ||
+		       type == ContentType.Undefined;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public AutoCompleteResult listResult(final ContentDescriptor desc, final int limit)
     {
-		final String content = desc.getValue();
+	    final AutoCompleteResult pvs = new AutoCompleteResult();
+
+	    // Would expect autocomplete framework to cancel previous requests,
+	    // but it doesn't always do this, so cancel any ongoing request before
+	    // starting a new one:
+	    cancel();
+
+	    final String content = desc.getValue();
+	    // Don't bother with RDB lookup for only a few characters:
+	    // Takes a lot of time and list will be far to long anyway.
+	    final int min_request_length = Preferences.getMinRequestLength();
+        if (content.length() < min_request_length)
+	    {
+	        logger.log(Level.FINE, "Ignoring request for {0}, need at least {1} characters",
+	                   new Object[] { content, min_request_length });
+	        return pvs;
+	    }
 		final String type = desc.getAutoCompleteType().value();
-		final Logger logger = Logger.getLogger(getClass().getName());
-		logger.log(Level.FINE, "Lookup type {0}, pattern {1}, limit {2}",
-		        new Object[] { type, content, limit });
-		
-		
+		logger.log(Level.FINE, ">>> Lookup {0} (type {1}, limit {2})",
+		        new Object[] { content, type, limit });
+
+
 		// Support partial matches:
 		// Lookup of "DTL" will actually look for "DTL*".
 		// Could also expand that to "*DTL*", but since SNS RDB is slow enough,
@@ -82,8 +102,7 @@ public class SNSPVListProvider implements IAutoCompleteProvider
 
         // Create RDB pattern from *, ? wildcards
     	final String like = AutoCompleteHelper.convertToSQL(search_pattern);
-    
-        final AutoCompleteResult pvs = new AutoCompleteResult();
+
         try
         {
             if (cache == null)
@@ -98,12 +117,12 @@ public class SNSPVListProvider implements IAutoCompleteProvider
             final String message = ex.getMessage();
             if (message != null  &&
                 (message.startsWith("ORA-01013")  ||  message.startsWith("ORA-01001")))
-                logger.log(Level.FINE, "Lookup for {0} cancelled", content);
+                logger.log(Level.FINE, "<<< Canceled lookup for {0}", content);
             else
-                logger.log(Level.WARNING, "Lookup for " + content + " failed", ex);
+                logger.log(Level.WARNING, "<<< Failed Lookup for " + content, ex);
             return pvs;
         }
-        
+
         // Mark, i.e. highlight the original search pattern within each result
         final Pattern namePattern = AutoCompleteHelper.convertToPattern(content);
         for (Proposal p : pvs.getProposals())
@@ -112,14 +131,14 @@ public class SNSPVListProvider implements IAutoCompleteProvider
             if (m.find())
                 p.addStyle(ProposalStyle.getDefault(m.start(), m.end()-1));
         }
-        
+
         if (logger.isLoggable(Level.FINER))
-            logger.log(Level.FINER, "PVs for {0} ({1}): {2}", new Object[] { content, pvs.getCount(), pvs.getProposalsAsString() });
+            logger.log(Level.FINER, "<<< PVs for {0} ({1}): {2}", new Object[] { content, pvs.getCount(), pvs.getProposalsAsString() });
         return pvs;
     }
 
     /** Perform lookup
-     * 
+     *
      *  @param pvs Where to store result
      *  @param like SQL 'LIKE' pattern
      *  @param limit Maximum number of PVs to return
@@ -139,7 +158,7 @@ public class SNSPVListProvider implements IAutoCompleteProvider
                     "SELECT SGNL_ID FROM EPICS.SGNL_REC WHERE SGNL_ID LIKE ? ORDER BY SGNL_ID");
         )
         {
-            setCurrentStatement(statement);
+            setCurrentStatement(statement, like);
             statement.setString(1, like);
             final ResultSet result = statement.executeQuery();
             while (result.next())
@@ -152,7 +171,7 @@ public class SNSPVListProvider implements IAutoCompleteProvider
         finally
         {
             cache.releaseConnection();
-            setCurrentStatement(null);
+            setCurrentStatement(null, null);
             pvs.setCount(count);
         }
     }
@@ -165,7 +184,7 @@ public class SNSPVListProvider implements IAutoCompleteProvider
             return;
         try
         {
-            Logger.getLogger(getClass().getName()).fine("Cancelling ongoing lookup");
+            Logger.getLogger(getClass().getName()).log(Level.FINE, "--- Cancelling ongoing lookup for {0}", current_pattern);
             current_statement.cancel();
             current_statement = null;
         }

@@ -24,22 +24,28 @@ public class Preferences
     {
         return get("url");
     }
-    
+
     /** @return RDB user name */
     public static String getUser()
     {
         return get("user");
     }
-    
+
     /** @return RDB password */
     public static String getPassword()
     {
         return get("password");
     }
-    
+
+    /** @return Minimum request length */
+    public static int getMinRequestLength()
+    {
+        return Integer.parseInt(get("min_request"));
+    }
+
     /** Locate setting from Eclipse preferences
      *  or directly read preferences.ini for Unit test
-     * 
+     *
      *  @param key Preference key
      *  @return Value
      */
