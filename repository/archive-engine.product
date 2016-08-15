@@ -33,7 +33,6 @@
       <plugin id="com.ibm.icu.base"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
-      <plugin id="org.antlr.runtime"/>
       <plugin id="org.csstudio.apputil"/>
       <plugin id="org.csstudio.archive.config"/>
       <plugin id="org.csstudio.archive.config.rdb"/>
