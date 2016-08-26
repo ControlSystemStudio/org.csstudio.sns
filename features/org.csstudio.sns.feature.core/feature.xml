@@ -2,7 +2,7 @@
 <feature
       id="org.csstudio.sns.feature.core"
       label="Core CSS Components"
-      version="4.0.1.qualifier"
+      version="4.1.0.qualifier"
       provider-name="Kay Kasemir &lt;kasemirk@ornl.gov&gt; - SNS"
       plugin="org.csstudio.sns.product">
 
@@ -35,19 +35,18 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.csstudio.core.diirt.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="org.csstudio.platform.libs.epics"
+  <plugin
+         id="org.epics.jca"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
 
    <plugin
-         id="org.csstudio.platform.libs.epics.ui"
+         id="org.epics.caj"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
+         version="0.0.0"/>
+ 
    <plugin
          id="org.csstudio.platform.libs.jms"
          download-size="0"
@@ -365,6 +364,13 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
+         id="org.csstudio.vtype.pv.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="javax.mail"
          download-size="0"
          install-size="0"
@@ -470,14 +476,14 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.epics.pvdata"
+         id="org.epics.pvDataJava"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.epics.pvaccess"
+         id="org.epics.pvAccessJava"
          download-size="0"
          install-size="0"
          version="0.0.0"
