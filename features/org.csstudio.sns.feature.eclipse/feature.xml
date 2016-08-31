@@ -42,16 +42,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.eclipse.gef"
          version="0.0.0"/>
 
-   <!-- The following plugins are listed in this feature:
-   <includes
-         id="org.eclipse.fx.target.rcp.feature"
-         version="0.0.0"/>
-         
-        When working in the IDE, using a target platform based on just a list of plugins,
-        that feature is not available.
-        By listing the plugins directly, it's easier to just "sync" & "launch" product files.
-     -->
-
    <plugin
          id="org.eclipse.fx.ui.workbench3"
          download-size="8"
@@ -73,8 +63,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          install-size="129"
          version="2.2.0.201501301028"
          unpack="false"/>
-
-   <!-- End of org.eclipse.fx.target.rcp.feature plugins -->        
 
    <plugin
          id="net.sf.py4j"
@@ -758,6 +746,14 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.diffplug.osgi.extension.sun.misc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
 </feature>

@@ -31,6 +31,7 @@
    </vm>
 
    <plugins>
+      <plugin id="com.diffplug.osgi.extension.sun.misc" fragment="true"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ibm.icu.base"/>
       <plugin id="javax.xml"/>
@@ -43,8 +44,6 @@
       <plugin id="org.csstudio.csdata"/>
       <plugin id="org.csstudio.java"/>
       <plugin id="org.csstudio.logging"/>
-      <plugin id="org.epics.jca"/>
-      <plugin id="org.epics.caj"/>
       <plugin id="org.csstudio.platform.libs.jdbc"/>
       <plugin id="org.csstudio.platform.libs.jms"/>
       <plugin id="org.csstudio.platform.utility.jms"/>
@@ -52,6 +51,8 @@
       <plugin id="org.csstudio.security"/>
       <plugin id="org.csstudio.vtype.pv"/>
       <plugin id="org.csstudio.workspace"/>
+      <plugin id="org.diirt.util"/>
+      <plugin id="org.diirt.vtype"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.expressions"/>
       <plugin id="org.eclipse.core.filesystem"/>
@@ -81,10 +82,10 @@
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.epics.caj"/>
+      <plugin id="org.epics.jca"/>
       <plugin id="org.epics.pvAccessJava"/>
       <plugin id="org.epics.pvDataJava"/>
-      <plugin id="org.diirt.util"/>
-      <plugin id="org.diirt.vtype"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
    </plugins>

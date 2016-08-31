@@ -32,6 +32,7 @@
    </vm>
 
    <plugins>
+      <plugin id="com.diffplug.osgi.extension.sun.misc" fragment="true"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.felix.gogo.command"/>
@@ -43,8 +44,6 @@
       <plugin id="org.csstudio.logging"/>
       <plugin id="org.csstudio.ndarray"/>
       <plugin id="org.csstudio.numjy"/>
-      <plugin id="org.epics.jca"/>
-      <plugin id="org.epics.caj"/>
       <plugin id="org.csstudio.platform.libs.jms"/>
       <plugin id="org.csstudio.scan"/>
       <plugin id="org.csstudio.scan.log"/>
@@ -74,6 +73,8 @@
       <plugin id="org.eclipse.jetty.util"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.epics.caj"/>
+      <plugin id="org.epics.jca"/>
       <plugin id="org.epics.pvAccessJava"/>
       <plugin id="org.epics.pvDataJava"/>
       <plugin id="org.hamcrest.core"/>
