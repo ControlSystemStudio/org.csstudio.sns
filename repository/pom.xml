@@ -70,6 +70,9 @@ Builds SNS products, place in local repo
               <id>archive-engine</id>
               <!-- Add version number to product top directory and zipped product -->
               <rootFolder>archive-engine-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>ArchiveEngine${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>archive-engine-${sns.version}</archiveFileName>
               <!-- When creating ZIP archive for more than one product, need 'attachId'  -->
               <attachId>archive-engine</attachId>
@@ -77,48 +80,72 @@ Builds SNS products, place in local repo
             <product>
               <id>archive-config</id>
               <rootFolder>archive-config-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>ArchiveConfig${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>archive-config-${sns.version}</archiveFileName>
               <attachId>archive-config</attachId>
             </product>
             <product>
               <id>alarm-config</id>
               <rootFolder>alarm-config-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>AlarmConfig${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>alarm-config-${sns.version}</archiveFileName>
               <attachId>alarm-config</attachId>
             </product>
             <product>
               <id>alarm-server</id>
               <rootFolder>alarm-server-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>AlarmServer${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>alarm-server-${sns.version}</archiveFileName>
               <attachId>alarm-server</attachId>
             </product>
             <product>
               <id>alarm-notifier</id>
               <rootFolder>alarm-notifier-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>AlarmNotifier${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>alarm-notifier-${sns.version}</archiveFileName>
               <attachId>alarm-notifier</attachId>
             </product>
             <product>
               <id>jms2rdb</id>
               <rootFolder>jms2rdb-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>JMS2RDB${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>jms2rdb-${sns.version}</archiveFileName>
               <attachId>jms2rdb</attachId>
             </product>
             <product>
               <id>scan-server</id>
               <rootFolder>scan-server-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>ScanServer${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>scan-server-${sns.version}</archiveFileName>
               <attachId>scan-server</attachId>
             </product>
             <product>
               <id>org.csstudio.basic.epics.product.product</id>
               <rootFolder>basic-epics-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>Css${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>basic-epics-${sns.version}</archiveFileName>
               <attachId>basic</attachId>
             </product>
             <product>
               <id>org.csstudio.sns.product.product</id>
               <rootFolder>sns-css-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>Css${sns.version}.app</macosx>
+              </rootFolders>
               <archiveFileName>sns-css-${sns.version}</archiveFileName>
               <attachId>sns</attachId>
             </product>
