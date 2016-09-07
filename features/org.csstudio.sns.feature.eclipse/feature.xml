@@ -42,26 +42,33 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.eclipse.gef"
          version="0.0.0"/>
 
+
+   <!-- Include EITHER the fx.target.rcp feature..
+   <includes
+         id="org.eclipse.fx.target.rcp.feature"
+         version="0.0.0"/>
+    -->
+   <!-- .. OR the plugins -->
    <plugin
          id="org.eclipse.fx.ui.workbench3"
          download-size="8"
-         install-size="12"
-         version="1.2.0.201501301028"
+         install-size="11"
+         version="2.1.0.201508240501"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.fx.osgi"
-         download-size="20"
-         install-size="36"
-         version="1.2.0.201501301028"
+         download-size="22"
+         install-size="40"
+         version="2.1.0.201508240501"
          fragment="true"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.fx.javafx"
-         download-size="135"
-         install-size="129"
-         version="2.2.0.201501301028"
+         download-size="142"
+         install-size="142"
+         version="2.2.0.201508240501"
          unpack="false"/>
 
    <plugin
