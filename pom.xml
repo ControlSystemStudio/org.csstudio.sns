@@ -53,9 +53,7 @@
     </pluginRepository>
   </pluginRepositories>
 
-  <!--
-    P2 REPOSITORIES
-  -->
+  <!-- P2 REPOSITORIES -->
   <repositories>
     <repository>
       <id>Eclipse</id>
@@ -70,6 +68,11 @@
     <repository>
       <id>efx</id>
       <url>http://download.eclipse.org/efxclipse/runtime-released/2.1.0/site</url>
+      <layout>p2</layout>
+    </repository>
+    <repository>
+      <id>csstudio-composite-repo</id>
+      <url>file:${csstudio.composite.repo}</url>
       <layout>p2</layout>
     </repository>
   </repositories>
@@ -113,23 +116,56 @@
       </plugins> 
     </pluginManagement>
 
-    <!--
-      PLUGIN CONFIGURATION
-    -->
+    <!-- PLUGIN CONFIGURATION -->
     <plugins>
-        <plugin>
-          <groupId>org.eclipse.tycho</groupId>
-          <artifactId>tycho-maven-plugin</artifactId>
-          <version>${tycho.version}</version>
-          <extensions>true</extensions>
-        </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <environments>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-compiler-plugin</artifactId>
         <version>${tycho.version}</version>
         <configuration>
-          <!-- Without this argument I get an error in the plugin 'org.csstudio.rap.core' -->
+          <!-- Avoid "[ERROR] Access restriction: ... is not API (restriction on classpath entry 
           <compilerArgument>-err:-forbidden</compilerArgument>
+            -->
         </configuration>
       </plugin>
       <plugin>
@@ -137,8 +173,10 @@
         <artifactId>tycho-packaging-plugin</artifactId>
         <version>${tycho.version}</version>
         <configuration>
-          <!--Some project include things that no longer exists. This should be fixed, but for now this parameter lets the build continue.-->
+          <!--Some projects include things that no longer exist.
+              This should be fixed, but for now this parameter lets the build continue.
           <strictBinIncludes>false</strictBinIncludes>
+            -->
         </configuration>
       </plugin>
       <plugin>
@@ -164,115 +202,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <!-- If a local repository is specified, use that. -->
-    <profile>
-      <id>csstudio-local-repo-enable</id>
-      <activation>
-        <file>
-          <exists>${csstudio.local.repo}/artifacts.jar</exists>
-        </file>
-      </activation>
-      <repositories>
-        <repository>
-          <id>csstudio-local-repo</id>
-          <url>file:${csstudio.local.repo}</url>
-          <layout>p2</layout>
-        </repository>
-      </repositories>
-    </profile>
-
-    <profile>
-      <id>csstudio-composite-repo-enable</id>
-      <activation>
-        <property>
-          <name>csstudio.composite.repo</name>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <id>csstudio-composite-repo</id>
-          <url>file:${csstudio.composite.repo}</url>
-          <layout>p2</layout>
-        </repository>
-      </repositories>
-    </profile>
-
-    <profile>
-      <id>cs-studio</id>
-      <activation>
-        <property>
-	  <name>!cs-studio</name>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <id>csstudio-thirdparty</id>
-          <url>http://download.controlsystemstudio.org/thirdparty/4.2</url>
-          <layout>p2</layout>
-        </repository>
-        <repository>
-          <id>csstudio-maven-osgi-bundles</id>
-          <url>http://download.controlsystemstudio.org/maven-osgi-bundles/4.2</url>
-          <layout>p2</layout>
-        </repository>
-	<!--
-        <repository>
-          <id>csstudio-core</id>
-          <url>http://download.controlsystemstudio.org/core/4.2</url>
-          <layout>p2</layout>
-        </repository>
-	-->
-      </repositories>
-    </profile>
-
-    <profile>
-      <id>all_platforms</id>
-      <activation>
-        <property>
-	  <name>!specific_platform</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho.version}</version>
-            <configuration>
-              <environments>
-                <environment>
-                  <os>linux</os>
-                  <ws>gtk</ws>
-                  <arch>x86</arch>
-                </environment>
-                <environment>
-                  <os>linux</os>
-                  <ws>gtk</ws>
-                  <arch>x86_64</arch>
-                </environment>
-                <environment>
-                  <os>win32</os>
-                  <ws>win32</ws>
-                  <arch>x86</arch>
-                </environment>
-                <environment>
-                  <os>win32</os>
-                  <ws>win32</ws>
-                  <arch>x86_64</arch>
-                </environment>
-                <environment>
-                  <os>macosx</os>
-                  <ws>cocoa</ws>
-                  <arch>x86_64</arch>
-                </environment>
-              </environments>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
 </project>
