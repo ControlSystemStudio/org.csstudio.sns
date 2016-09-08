@@ -1,6 +1,7 @@
 package org.csstudio.sns.mpsbypasses.ui;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import org.csstudio.logbook.AttachmentBuilder;
@@ -11,8 +12,6 @@ import org.csstudio.sns.mpsbypasses.model.BypassModel;
 import org.csstudio.ui.util.dialogs.ExceptionDetailsErrorDialog;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
-
-import com.sun.xml.internal.ws.util.ByteArrayBuffer;
 
 /** Menu action to create elog entry
  *  @author Delphy Armstrong - Original MPSBypassGUI
@@ -41,8 +40,8 @@ public class ELogAction extends Action
 		try
 		{
 			// Create the html page of bypass information
-		    final ByteArrayBuffer html_buf = new ByteArrayBuffer();
-			final PrintStream out = new PrintStream(html_buf);
+		    final ByteArrayOutputStream html_buf = new ByteArrayOutputStream();
+		   final PrintStream out = new PrintStream(html_buf);
 			new HtmlReport(out, model).write();
 			out.close();
 
@@ -50,8 +49,8 @@ public class ELogAction extends Action
 			final AttachmentBuilder attachment = AttachmentBuilder
 			        .attachment("BypassTable.html")
 			        .contentType("html")
-			        .inputStream(new ByteArrayInputStream(html_buf.getRawData()));
-			
+			        .inputStream(new ByteArrayInputStream(html_buf.toByteArray()));
+
 			// Create log entry
 		    final LogEntryBuilder entry_builder = LogEntryBuilder
 			    .withText("MPS Bypass Report" +
