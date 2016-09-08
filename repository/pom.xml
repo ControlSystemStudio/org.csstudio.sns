@@ -58,6 +58,15 @@ Builds SNS products, place in local repo
 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <includeAllDependencies>true</includeAllDependencies>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-p2-director-plugin</artifactId>
         <version>${tycho.version}</version>
         <configuration>
@@ -171,74 +180,7 @@ Builds SNS products, place in local repo
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-p2-repository-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <includeAllDependencies>true</includeAllDependencies>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
-
-  <!-- As a result of the director plugin run configured above,
-       products will be generated under
-           cs-studio-SNS/repository/target/products/*,
-       and a P2 repo for installing additional features under
-           cs-studio-SNS/repository/target/repository.
-
-       If a local repository is specified, mirror the build repository
-       to that local repository
-    -->
-  <profiles>
-    <profile>
-      <id>csstudio-local-repo-mirror</id>
-      <activation>
-        <property>
-          <name>csstudio.local.repo</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho.extras</groupId>
-            <artifactId>tycho-p2-extras-plugin</artifactId>
-            <version>${tycho.version}</version>
-            <executions>
-              <execution>
-                <id>mirror-build-to-local-repository</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>mirror</goal>
-                </goals>
-                <configuration>
-                  <!-- Details: https://www.eclipse.org/tycho/sitedocs-extras/tycho-p2-extras-plugin/mirror-mojo.html -->
-                  <source>
-                    <repository>
-                      <url>${project.baseUri}/target/repository</url>
-                      <layout>p2</layout>
-                    </repository>
-                  </source>
-                  <append>true</append>
-                  <compress>true</compress>
-                  <mirrorMetadataOnly>false</mirrorMetadataOnly>
-                  <destination>${csstudio.local.repo}</destination>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>tycho-p2-repository-plugin</artifactId>
-            <version>${tycho.version}</version>
-            <configuration>
-              <includeAllDependencies>true</includeAllDependencies>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
 </project>
