@@ -71,7 +71,7 @@ Builds SNS products, place in local repo
               <!-- Add version number to product top directory and zipped product -->
               <rootFolder>archive-engine-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>ArchiveEngine${sns.version}.app</macosx>
+                <macosx>ArchiveEngine.app</macosx>
               </rootFolders>
               <archiveFileName>archive-engine-${sns.version}</archiveFileName>
               <!-- When creating ZIP archive for more than one product, need 'attachId'  -->
@@ -81,7 +81,7 @@ Builds SNS products, place in local repo
               <id>archive-config</id>
               <rootFolder>archive-config-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>ArchiveConfig${sns.version}.app</macosx>
+                <macosx>ArchiveConfig.app</macosx>
               </rootFolders>
               <archiveFileName>archive-config-${sns.version}</archiveFileName>
               <attachId>archive-config</attachId>
@@ -90,7 +90,7 @@ Builds SNS products, place in local repo
               <id>alarm-config</id>
               <rootFolder>alarm-config-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>AlarmConfig${sns.version}.app</macosx>
+                <macosx>AlarmConfig.app</macosx>
               </rootFolders>
               <archiveFileName>alarm-config-${sns.version}</archiveFileName>
               <attachId>alarm-config</attachId>
@@ -99,7 +99,7 @@ Builds SNS products, place in local repo
               <id>alarm-server</id>
               <rootFolder>alarm-server-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>AlarmServer${sns.version}.app</macosx>
+                <macosx>AlarmServer.app</macosx>
               </rootFolders>
               <archiveFileName>alarm-server-${sns.version}</archiveFileName>
               <attachId>alarm-server</attachId>
@@ -108,7 +108,7 @@ Builds SNS products, place in local repo
               <id>alarm-notifier</id>
               <rootFolder>alarm-notifier-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>AlarmNotifier${sns.version}.app</macosx>
+                <macosx>AlarmNotifier.app</macosx>
               </rootFolders>
               <archiveFileName>alarm-notifier-${sns.version}</archiveFileName>
               <attachId>alarm-notifier</attachId>
@@ -117,7 +117,7 @@ Builds SNS products, place in local repo
               <id>jms2rdb</id>
               <rootFolder>jms2rdb-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>JMS2RDB${sns.version}.app</macosx>
+                <macosx>JMS2RDB.app</macosx>
               </rootFolders>
               <archiveFileName>jms2rdb-${sns.version}</archiveFileName>
               <attachId>jms2rdb</attachId>
@@ -126,7 +126,7 @@ Builds SNS products, place in local repo
               <id>scan-server</id>
               <rootFolder>scan-server-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>ScanServer${sns.version}.app</macosx>
+                <macosx>ScanServer.app</macosx>
               </rootFolders>
               <archiveFileName>scan-server-${sns.version}</archiveFileName>
               <attachId>scan-server</attachId>
@@ -135,7 +135,7 @@ Builds SNS products, place in local repo
               <id>org.csstudio.basic.epics.product.product</id>
               <rootFolder>basic-epics-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>Css${sns.version}.app</macosx>
+                <macosx>Css.app</macosx>
               </rootFolders>
               <archiveFileName>basic-epics-${sns.version}</archiveFileName>
               <attachId>basic</attachId>
@@ -144,7 +144,7 @@ Builds SNS products, place in local repo
               <id>org.csstudio.sns.product.product</id>
               <rootFolder>sns-css-${sns.version}</rootFolder>
               <rootFolders>
-                <macosx>Css${sns.version}.app</macosx>
+                <macosx>Css.app</macosx>
               </rootFolders>
               <archiveFileName>sns-css-${sns.version}</archiveFileName>
               <attachId>sns</attachId>
