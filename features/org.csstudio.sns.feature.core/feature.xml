@@ -48,6 +48,12 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
  
    <plugin
+         id="org.eclipse.paho.client.mqttv3"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+ 
+   <plugin
          id="org.csstudio.platform.libs.jms"
          download-size="0"
          install-size="0"
