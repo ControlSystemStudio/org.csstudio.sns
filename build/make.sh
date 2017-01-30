@@ -47,25 +47,29 @@ OPTS="-s $MSET clean verify"
 
 mvn -version
 
-sleep 5
+# sleep 5
 
 cd ../..
 TOP=`pwd`
 
 # rm -rf ~/.m2/repository
-rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.log 4_applications.log 5_sns.log
+rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.log 4_applications.log 5_display_builder.log 6_sns.log
 
-(cd diirt; time  mvn $OPTS ) | tee 0_diirt.log
+#(cd diirt; time  mvn $OPTS ) | tee 0_diirt.log
 
-(cd maven-osgi-bundles; time  mvn $OPTS ) | tee 1_maven-osgi-bundles.log
+#(cd maven-osgi-bundles; time  mvn $OPTS ) | tee 1_maven-osgi-bundles.log
 
-(cd cs-studio-thirdparty; time  mvn $OPTS ) | tee 2_cs-studio-thirdparty.log
+#(cd cs-studio-thirdparty; time  mvn $OPTS ) | tee 2_cs-studio-thirdparty.log
 
-(cd cs-studio/core; time  mvn $OPTS ) | tee 3_core.log
+#(cd cs-studio/core; time  mvn $OPTS ) | tee 3_core.log
 
-(cd cs-studio/applications; time  mvn $OPTS ) | tee 4_applications.log
+#(cd cs-studio/applications; time  mvn $OPTS ) | tee 4_applications.log
 
-(cd org.csstudio.sns; time  mvn $OPTS ) | tee 5_sns.log
+# display.builder pom.xml looks for $CSS_REPO
+CSS_REPO=file:$TOP/org.csstudio.sns/css_repo
+(cd org.csstudio.display.builder; time mvn -s $MSET -Dcss-repo=$CSS_REPO clean verify ) | tee 5_display_builder.log
+
+(cd org.csstudio.sns; time  mvn $OPTS ) | tee 6_sns.log
 
 # Products now under org.csstudio.sns/repository/target/products/*
 # Feature repo under org.csstudio.sns/repository/target/repository

@@ -1,12 +1,13 @@
-GH=https://github.com/ControlSystemStudio/
-for i in diirt maven-osgi-bundles cs-studio-thirdparty cs-studio org.csstudio.sns
+GH=https://github.com/
+for i in ControlSystemStudio/diirt ControlSystemStudio/maven-osgi-bundles ControlSystemStudio/cs-studio-thirdparty ControlSystemStudio/cs-studio kasemir/org.csstudio.display.builder ControlSystemStudio/org.csstudio.sns
 do
-  if [ -d $i ]
+  D=`basename $i`
+  if [ -d $D ]
   then
-    echo "==== Updating $i ===="
-    (cd $i; git pull; git branch)
+    echo "==== Updating $D ===="
+    (cd $D; git pull; git branch)
   else
-    echo "==== Fetching $i ===="
+    echo "==== Fetching $D ===="
     git clone $GH/$i
   fi
 done

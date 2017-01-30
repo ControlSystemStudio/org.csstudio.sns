@@ -12,11 +12,12 @@
      -->
     <property name='p2.atomic.composite.loading' value='false'/>
   </properties>
-  <children size="5">
+  <children size="6">
     <child location="../../diirt/p2/target/repository/"/>
     <child location="../../maven-osgi-bundles/repository/target/repository"/>
     <child location="../../cs-studio-thirdparty/repository/target/repository"/>
     <child location="../../cs-studio/core/p2repo"/>
     <child location="../../cs-studio/applications/p2repo"/>
+    <child location="../../org.csstudio.display.builder/repository/target/repository"/>
   </children>
 </repository>
