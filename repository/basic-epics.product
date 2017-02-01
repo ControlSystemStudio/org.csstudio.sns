@@ -84,6 +84,19 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <feature id="org.csstudio.sns.feature.basiccore"/>
       <feature id="org.csstudio.sns.feature.applications"/>
       <feature id="org.csstudio.sns.feature.repository"/>
+
+      <!-- Legacy BOY and Databrowser -->
+      <feature id="org.csstudio.applications.opibuilder.feature"/>
+      <!--
+      <feature id="org.csstudio.trends.databrowser2.feature"/>
+      <feature id="org.csstudio.trends.databrowser2.opiwidget"/>
+      -->
+
+      <!-- Display Builder and Databrowser -->
+      <feature id="org.csstudio.display.builder.feature"/>
+      <feature id="org.csstudio.trends.databrowser3.feature"/>
+      <feature id="org.csstudio.trends.databrowser3.bobwidget.feature"/>
+      <feature id="org.csstudio.trends.databrowser3.opiwidget.feature"/>
    </features>
 
    <configurations>
