@@ -22,34 +22,35 @@ public class Preferences
     /** @return RDB URL */
     public static String getURL()
     {
-        return get("url");
+        return get("url", "");
     }
 
     /** @return RDB user name */
     public static String getUser()
     {
-        return get("user");
+        return get("user", "");
     }
 
     /** @return RDB password */
     public static String getPassword()
     {
-        return get("password");
+        return get("password", "");
     }
 
     /** @return Minimum request length */
     public static int getMinRequestLength()
     {
-        return Integer.parseInt(get("min_request"));
+        return Integer.parseInt(get("min_request", "5"));
     }
 
     /** Locate setting from Eclipse preferences
      *  or directly read preferences.ini for Unit test
      *
      *  @param key Preference key
+     *  @param default_value Default value
      *  @return Value
      */
-    private static String get(final String key)
+    private static String get(final String key, final String default_value)
     {
         final IPreferencesService prefs = Platform.getPreferencesService();
         if (prefs == null)
@@ -66,6 +67,6 @@ public class Preferences
             return props.getProperty(key);
         }
         else
-            return prefs.getString("org.csstudio.sns.pvnames", key, null, null);
+            return prefs.getString("org.csstudio.sns.pvnames", key, default_value, null);
     }
 }
