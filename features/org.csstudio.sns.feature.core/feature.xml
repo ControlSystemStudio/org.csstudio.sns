@@ -35,7 +35,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.csstudio.core.diirt.feature"
          version="0.0.0"/>
 
-  <plugin
+   <plugin
          id="org.epics.jca"
          download-size="0"
          install-size="0"
@@ -46,13 +46,13 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          download-size="0"
          install-size="0"
          version="0.0.0"/>
- 
+
    <plugin
          id="org.eclipse.paho.client.mqttv3"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
- 
+
    <plugin
          id="org.csstudio.platform.libs.jms"
          download-size="0"
@@ -364,13 +364,6 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.csstudio.vtype.pv"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.csstudio.vtype.pv.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
