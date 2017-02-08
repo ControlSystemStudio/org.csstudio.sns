@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="EPICS PV Tree" uid="pvtree" id="org.csstudio.diag.epics.pvtree.product" application="org.csstudio.diag.epics.pvtree.application" useFeatures="false" includeLaunchers="true">
+<product name="EPICS PV Tree" uid="pvtree" id="org.csstudio.diag.epics.pvtree.product" application="org.csstudio.diag.epics.pvtree.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
