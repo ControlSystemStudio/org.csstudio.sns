@@ -89,6 +89,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
       <!-- Legacy BOY and Databrowser -->
       <feature id="org.csstudio.applications.opibuilder.feature"/>
+      <feature id="org.csstudio.applications.opibuilder.edm.feature"/>
       <!--
       <feature id="org.csstudio.trends.databrowser2.feature"/>
       <feature id="org.csstudio.trends.databrowser2.opiwidget"/>
