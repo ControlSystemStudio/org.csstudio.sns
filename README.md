@@ -14,6 +14,7 @@ Example for compiling the SNS products
     maven-osgi-bundles
     cs-studio-thirdparty
     cs-studio
+    org.csstudio.display.builder
     org.csstudio.sns
 
  2) `cd org.csstudio.sns/build`
@@ -22,14 +23,16 @@ Example for compiling the SNS products
  
  4) `sh make.sh`
    Note that this build setup is self-contained.
-   You can start out without any `~/.m2` directory.
+   You can start out without any `~/.m2` directory,
+   in fact you may want to delete an existing org.csstudio.display.builder
+   to assert a clean plate.
    Maven is invoked with the `settings.xml` from `org.csstudio.sns/build`,
    which in turn enable a composite repository from `org.csstudio.sns/css_repo`
    that is configured as the combination of all the repositories that
    we are about to build locally: diirt, maven-osgi-bundles, etc.
 
 As a result, you should find log files for the various build steps in the original directory:
-`0_diirt.log`, `_maven-osgi-bundles.log`, `2_cs-studio-thirdparty.log`, `3_core.log`, `4_applications.log`, `5_sns.log`.
+`0_diirt.log`, `1_maven-osgi-bundles.log`, `2_cs-studio-thirdparty.log`, `3_core.log`, `4_applications.log`, `5_display_builder.log`, `6_sns.log`.
 
 The directory `org.csstudio.sns/repository/target/products` will contain the binary products.
 One of the UI product's /plugin folder can be used as a target platform for the Eclipse IDE.
