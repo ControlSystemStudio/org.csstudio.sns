@@ -12,6 +12,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
+    <module>org.csstudio.sns.compare</module>
     <module>org.csstudio.basic.epics.product</module>
     <module>org.csstudio.diag.pvfields.sns</module>
     <module>org.csstudio.diag.pvutil</module>
