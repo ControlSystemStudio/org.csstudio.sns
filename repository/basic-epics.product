@@ -28,6 +28,8 @@ See http://ics-web.sns.ornl.gov/css
    <launcherArgs>
       <programArgs>--launcher.defaultAction
 openFile
+--launcher.GTK_version
+2
       </programArgs>
       <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xmx1024m
