@@ -58,13 +58,10 @@
       <plugin id="org.csstudio.archive.writer.influxdb"/>
       <plugin id="org.csstudio.diirt.util.core.preferences"/>
       <plugin id="org.csstudio.java"/>
-      <plugin id="org.csstudio.java.test" fragment="true"/>
       <plugin id="org.csstudio.logging"/>
-      <plugin id="org.csstudio.logging.test" fragment="true"/>
       <plugin id="org.csstudio.platform.libs.jdbc"/>
       <plugin id="org.csstudio.platform.libs.jms"/>
       <plugin id="org.csstudio.security"/>
-      <plugin id="org.csstudio.security.test" fragment="true"/>
       <plugin id="org.csstudio.utility.httpd"/>
       <plugin id="org.csstudio.vtype.pv"/>
       <plugin id="org.diirt.util"/>
