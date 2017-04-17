@@ -35,11 +35,14 @@
       <plugin id="com.diffplug.osgi.extension.sun.misc" fragment="true"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.commons.lang3"/>
       <plugin id="org.apache.felix.gogo.command"/>
       <plugin id="org.apache.felix.gogo.runtime"/>
       <plugin id="org.apache.felix.gogo.shell"/>
       <plugin id="org.csstudio.apputil"/>
       <plugin id="org.csstudio.data"/>
+      <plugin id="org.csstudio.diirt.util.core.preferences"/>
       <plugin id="org.csstudio.java"/>
       <plugin id="org.csstudio.logging"/>
       <plugin id="org.csstudio.ndarray"/>
