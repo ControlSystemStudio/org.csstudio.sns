@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="ArchiveEngineInfluxDB" uid="archive-engine-influxdb" id="org.csstudio.archive.engine.influxdb.engine" application="org.csstudio.archive.engine.influxdb.application" version="4.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="ArchiveEngine" uid="archive-engine-influxdb" id="org.csstudio.archive.engine.engine" application="org.csstudio.archive.engine.application" version="4.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -9,8 +9,10 @@
    <launcherArgs>
       <programArgs>--launcher.suppressErrors
 -engine demo
--set_pref org.csstudio.archive.xml/config_path=/Users/elc/local/src/CSS/csstudio-ci/BUILD/archive-influxdb/org.csstudio.archive.config.influxdb/xml/
--set_pref other.plugin/test=value
+-port 8046
+-set_pref org.csstudio.archive.config.xml/config_path=/Users/elc/local/src/CSS/csstudio-ci/BUILD/archive-influxdb/org.csstudio.archive.config.xml/xml/
+-set_pref org.csstudio.archive.config.xml/engine_url=http://localhost:8046
+-set_pref org.csstudio.archive.influxdb/url=http://diane.ornl.gov:8086
       </programArgs>
       <vmArgs>-Djava.awt.headless=true -Xms64m -Xmx256m
 -Declipse.exitdata=
