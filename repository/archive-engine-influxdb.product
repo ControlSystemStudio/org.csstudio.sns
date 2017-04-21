@@ -13,6 +13,9 @@
 -set_pref org.csstudio.archive.config.xml/config_path=/Users/elc/local/src/CSS/csstudio-ci/BUILD/archive-influxdb/org.csstudio.archive.config.xml/xml/
 -set_pref org.csstudio.archive.config.xml/engine_url=http://localhost:8046
 -set_pref org.csstudio.archive.influxdb/url=http://diane.ornl.gov:8086
+-set_pref org.csstudio.archive.influxdb/default_db=test_data
+-set_pref org.csstudio.archive.influxdb/default_meta_db=test_meta
+-set_pref org.csstudio.archive.influxdb/db_prefix=archive_
       </programArgs>
       <vmArgs>-Djava.awt.headless=true -Xms64m -Xmx256m
 -Declipse.exitdata=
