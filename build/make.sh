@@ -14,12 +14,14 @@
 # Invoking this file will then build CSS using local maven settings.xml
 # and a P2 composite repo built as a result of compiling diirt etc. locally.
 
+echo "Java: $JAVA_HOME"
 if [ ! -x "$JAVA_HOME/bin/java" ]
 then
     echo "Missing JAVA_HOME"
     exit 1
 fi
 
+echo "M2: $M2_HOME"
 if [ ! -x "$M2_HOME/bin/mvn" ]
 then
     echo "Missing M2_HOME"

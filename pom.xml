@@ -28,14 +28,17 @@
   <!-- PROPERTIES -->
   <properties>
     <!-- VERSIONS -->
-    <sns.version>4.2.0</sns.version>
+    <sns.version>4.3.0</sns.version>
 
-    <tycho.version>0.23.1</tycho.version>
+    <tycho.version>1.0.0</tycho.version>
     <tycho-extras.version>${tycho.version}</tycho-extras.version>
-    <eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
-    <eclipse-update-site>http://download.eclipse.org/eclipse/updates/4.6</eclipse-update-site>
+    <eclipse.central.url>http://download.eclipse.org</eclipse.central.url>
+    <eclipse-site>${eclipse.central.url}/releases/neon</eclipse-site>
+    <eclipse-update-site>${eclipse.central.url}/eclipse/updates/4.6</eclipse-update-site>
     <!-- PyDev web site suggests http://pydev.org/updates/, which redirects to this: -->
     <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
+    <efx-site>${eclipse.central.url}/efxclipse/runtime-released/2.4.0/site</efx-site>
+    <orbit-site>${eclipse.central.url}/tools/orbit/R-builds/R20170307180635/repository</orbit-site>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -74,8 +77,13 @@
       <layout>p2</layout>
     </repository>
     <repository>
+      <id>orbit</id>
+      <url>${orbit-site}</url>
+      <layout>p2</layout>
+    </repository>
+    <repository>
       <id>efx</id>
-      <url>http://download.eclipse.org/efxclipse/runtime-released/2.1.0/site</url>
+      <url>${efx-site}</url>
       <layout>p2</layout>
     </repository>
     <repository>

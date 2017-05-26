@@ -30,8 +30,10 @@
 
    <plugins>
       <plugin id="com.diffplug.osgi.extension.sun.misc" fragment="true"/>
+<!--
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ibm.icu.base"/>
+  -->
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.csstudio.apputil"/>
