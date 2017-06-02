@@ -64,13 +64,11 @@
       <url>${eclipse-site}</url>
       <layout>p2</layout>
     </repository>
-    <!-- Needed?
     <repository>
       <id>eclipse-updates</id>
       <url>${eclipse-update-site}</url>
       <layout>p2</layout>
     </repository>
-    -->
     <repository>
       <id>pydev</id>
       <url>${pydev-site}</url>
