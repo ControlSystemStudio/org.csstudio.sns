@@ -43,12 +43,11 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
 
 
-   <!-- Include EITHER the fx.target.rcp feature..
+   <!-- Include EITHER the fx.target.rcp feature..  -->
    <includes
          id="org.eclipse.fx.target.rcp.feature"
          version="0.0.0"/>
-    -->
-   <!-- .. OR the plugins -->
+   <!-- .. OR the plugins
    <plugin
          id="org.eclipse.fx.ui.workbench3"
          download-size="8"
@@ -70,6 +69,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          install-size="142"
          version="2.2.0.201508240501"
          unpack="false"/>
+     -->
 
    <plugin
          id="net.sf.py4j"
