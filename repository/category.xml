@@ -11,11 +11,9 @@
    <feature id="org.csstudio.sns.feature.beamline.image">
       <category name="opt"/>
    </feature>
-<!--
    <feature id="org.csstudio.sns.feature.pydev">
       <category name="opt"/>
    </feature>
--->
    <feature id="org.csstudio.sns.feature.ccr">
       <category name="opt"/>
    </feature>

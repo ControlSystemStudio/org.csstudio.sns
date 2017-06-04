@@ -20,9 +20,7 @@
     <module>org.csstudio.sns.feature.repository.git</module>
     <module>org.csstudio.sns.feature.repository.cvs</module>
     <module>org.csstudio.sns.feature.beamline.image</module>
-<!--
     <module>org.csstudio.sns.feature.pydev</module>
--->
     <module>org.csstudio.sns.feature.snscore</module>
     <module>org.csstudio.sns.feature.snsapps</module>
     <module>org.csstudio.sns.feature.ccr</module>

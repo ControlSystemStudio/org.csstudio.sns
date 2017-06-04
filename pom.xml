@@ -41,9 +41,7 @@
       -->
     <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository</orbit-site>
 
-    <!-- PyDev web site suggests http://pydev.org/updates/, which redirects to this:
-    <pydev-site>http://update-production-pydev.s3.amazonaws.com/pydev/updates</pydev-site>
-     -->
+    <pydev-site>https://dl.bintray.com/fabioz/pydev/5.7.0</pydev-site>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -74,13 +72,11 @@
       <url>${eclipse-update-site}</url>
       <layout>p2</layout>
     </repository>
-<!--
     <repository>
       <id>pydev</id>
       <url>${pydev-site}</url>
       <layout>p2</layout>
     </repository>
-    -->
     <repository>
       <id>orbit</id>
       <url>${orbit-site}</url>
