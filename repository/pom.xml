@@ -74,19 +74,19 @@ Builds SNS products, place in local repo
                but details of generated files are configured in there.
             -->
           <products>
-   <!--
             <product>
-              <!XX 'uid' in the *.product XX>
+              <!-- 'uid' in the *.product -->
               <id>archive-engine</id>
-              <!XX Add version number to product top directory and zipped product XX>
+              <!-- Add version number to product top directory and zipped product -->
               <rootFolder>archive-engine-${sns.version}</rootFolder>
               <rootFolders>
                 <macosx>ArchiveEngine.app</macosx>
               </rootFolders>
               <archiveFileName>archive-engine-${sns.version}</archiveFileName>
-              <!XX When creating ZIP archive for more than one product, need 'attachId'  XX>
+              <!-- When creating ZIP archive for more than one product, need 'attachId'  -->
               <attachId>archive-engine</attachId>
             </product>
+   <!--
             <product>
               <id>pvtree</id>
               <rootFolder>pvtree-${sns.version}</rootFolder>
@@ -96,6 +96,7 @@ Builds SNS products, place in local repo
               <archiveFileName>pvtree-${sns.version}</archiveFileName>
               <attachId>pvtree</attachId>
             </product>
+-->
             <product>
               <id>archive-config</id>
               <rootFolder>archive-config-${sns.version}</rootFolder>
@@ -105,7 +106,6 @@ Builds SNS products, place in local repo
               <archiveFileName>archive-config-${sns.version}</archiveFileName>
               <attachId>archive-config</attachId>
             </product>
--->
             <product>
               <id>alarm-config</id>
               <rootFolder>alarm-config-${sns.version}</rootFolder>
