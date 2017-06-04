@@ -74,16 +74,17 @@ Builds SNS products, place in local repo
                but details of generated files are configured in there.
             -->
           <products>
+   <!--
             <product>
-              <!-- 'uid' in the *.product -->
+              <!XX 'uid' in the *.product XX>
               <id>archive-engine</id>
-              <!-- Add version number to product top directory and zipped product -->
+              <!XX Add version number to product top directory and zipped product XX>
               <rootFolder>archive-engine-${sns.version}</rootFolder>
               <rootFolders>
                 <macosx>ArchiveEngine.app</macosx>
               </rootFolders>
               <archiveFileName>archive-engine-${sns.version}</archiveFileName>
-              <!-- When creating ZIP archive for more than one product, need 'attachId'  -->
+              <!XX When creating ZIP archive for more than one product, need 'attachId'  XX>
               <attachId>archive-engine</attachId>
             </product>
             <product>
@@ -149,6 +150,7 @@ Builds SNS products, place in local repo
               <archiveFileName>scan-server-${sns.version}</archiveFileName>
               <attachId>scan-server</attachId>
             </product>
+-->
             <product>
               <id>org.csstudio.basic.epics.product.product</id>
               <rootFolder>basic-epics-${sns.version}</rootFolder>
