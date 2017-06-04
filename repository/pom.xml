@@ -105,6 +105,7 @@ Builds SNS products, place in local repo
               <archiveFileName>archive-config-${sns.version}</archiveFileName>
               <attachId>archive-config</attachId>
             </product>
+-->
             <product>
               <id>alarm-config</id>
               <rootFolder>alarm-config-${sns.version}</rootFolder>
@@ -132,7 +133,6 @@ Builds SNS products, place in local repo
               <archiveFileName>alarm-notifier-${sns.version}</archiveFileName>
               <attachId>alarm-notifier</attachId>
             </product>
--->
             <product>
               <id>jms2rdb</id>
               <rootFolder>jms2rdb-${sns.version}</rootFolder>
