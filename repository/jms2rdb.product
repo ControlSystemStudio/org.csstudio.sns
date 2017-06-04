@@ -41,7 +41,6 @@
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.runtime"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.http.jetty"/>
@@ -60,7 +59,6 @@
       <plugin id="org.eclipse.jetty.servlet"/>
       <plugin id="org.eclipse.jetty.util"/>
       <plugin id="org.eclipse.osgi"/>
-      <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
