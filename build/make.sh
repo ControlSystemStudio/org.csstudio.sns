@@ -67,7 +67,7 @@ rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.lo
 
 # display.builder pom.xml looks for $CSS_REPO
 CSS_REPO=file:$TOP/org.csstudio.sns/css_repo
-(cd org.csstudio.display.builder; time mvn -s $MSET -Dcss-repo=$CSS_REPO clean verify ) | tee 5_display_builder.log
+(cd org.csstudio.display.builder; time mvn -s $MSET -Dcss_repo=$CSS_REPO clean verify ) | tee 5_display_builder.log
 
 (cd org.csstudio.sns; time  mvn $OPTS ) | tee 6_sns.log
 
