@@ -42,9 +42,50 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          id="org.eclipse.gef"
          version="0.0.0"/>
 
+   <!-- Include EITHER the fx.target.rcp feature..
    <includes
          id="org.eclipse.fx.target.rcp.feature"
          version="0.0.0"/>
+    -->
+         
+   <!-- .. OR list the plugins from that feature.
+        In principle, including the feature should be preferred.
+        However, if a simple IDE target platform uses just the 'plugins/'
+        folder of the Maven-generated product, the IDE won't know
+        about the fx.target.rcp feature, and thus require manual
+        addition of these plugins to the launch configuration.
+        Listing the plugins in here will allow the *.product
+        files to run without further manual additions in the IDE.
+        On the downside, updates to Eclipse will require including
+        the feature for one maven build,
+        then then updating the specific plugin details from the
+        fx.target.rcp feature.
+     -->
+   
+  <plugin
+         id="org.eclipse.fx.ui.workbench3"
+         download-size="8"
+         install-size="11"
+         version="2.4.0.201605100504"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.fx.osgi"
+         download-size="22"
+         install-size="40"
+         version="2.4.0.201605100504"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.fx.javafx"
+         download-size="142"
+         install-size="142"
+         version="2.2.0.201605100504"
+         unpack="false"/>
+         
+   <!-- ^^ fx.target.rcp feature plugins ^^ -->
+
 
    <plugin
          id="net.sf.py4j"
@@ -293,6 +334,13 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.osgi.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.apache.commons.logging"
          download-size="0"
          install-size="0"
@@ -486,6 +534,12 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.eclipse.ui.intro.universal"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.ui.intro.quicklinks"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
