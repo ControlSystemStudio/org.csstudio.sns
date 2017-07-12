@@ -28,7 +28,7 @@
   <!-- PROPERTIES -->
   <properties>
     <!-- VERSIONS -->
-    <sns.version>4.2.0</sns.version>
+    <sns.version>4.5.0</sns.version>
 
     <tycho.version>1.0.0</tycho.version>
     <tycho-extras.version>${tycho.version}</tycho-extras.version>
