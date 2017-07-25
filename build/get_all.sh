@@ -1,5 +1,5 @@
 GH=https://github.com/
-for i in ControlSystemStudio/diirt ControlSystemStudio/maven-osgi-bundles ControlSystemStudio/cs-studio-thirdparty ControlSystemStudio/cs-studio kasemir/org.csstudio.display.builder ControlSystemStudio/org.csstudio.sns
+for i in diirt/diirt ControlSystemStudio/maven-osgi-bundles ControlSystemStudio/cs-studio-thirdparty ControlSystemStudio/cs-studio kasemir/org.csstudio.display.builder ControlSystemStudio/org.csstudio.sns
 do
   D=`basename $i`
   if [ -d $D ]
