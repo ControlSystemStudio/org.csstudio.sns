@@ -86,6 +86,15 @@ Builds SNS products, place in local repo
               <!-- When creating ZIP archive for more than one product, need 'attachId'  -->
               <attachId>archive-engine</attachId>
             </product>
+	    <product>
+              <id>archive-engine-influxdb</id>
+              <rootFolder>archive-engine-influxdb-${sns.version}</rootFolder>
+              <rootFolders>
+                <macosx>ArchiveEngineInfluxDB.app</macosx>
+              </rootFolders>
+              <archiveFileName>archive-engine-influxdb-${sns.version}</archiveFileName>
+              <attachId>archive-engine-influxdb</attachId>
+            </product>
             <product>
               <id>archive-config</id>
               <rootFolder>archive-config-${sns.version}</rootFolder>
