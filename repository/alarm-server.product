@@ -7,7 +7,7 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>--launcher.suppressErrors
+      <programArgs>--launcher.suppressErrors -console
       </programArgs>
       <vmArgs>-Declipse.exitdata=
 -Djava.awt.headless=true -Xms64m -Xmx256m
