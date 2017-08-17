@@ -35,6 +35,8 @@
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ibm.icu.base"/>
       <plugin id="javax.xml"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.commons.lang3"/>
       <plugin id="org.apache.felix.gogo.command"/>
       <plugin id="org.apache.felix.gogo.runtime"/>
       <plugin id="org.apache.felix.gogo.shell"/>
@@ -42,6 +44,7 @@
       <plugin id="org.csstudio.alarm.beast.server"/>
       <plugin id="org.csstudio.apputil"/>
       <plugin id="org.csstudio.csdata"/>
+      <plugin id="org.csstudio.diirt.util.core.preferences"/>
       <plugin id="org.csstudio.java"/>
       <plugin id="org.csstudio.logging"/>
       <plugin id="org.csstudio.platform.libs.jdbc"/>
@@ -79,6 +82,7 @@
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.paho.client.mqttv3"/>
       <plugin id="org.epics.caj"/>
       <plugin id="org.epics.jca"/>
       <plugin id="org.epics.pvAccessJava"/>
