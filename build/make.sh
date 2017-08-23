@@ -42,6 +42,7 @@ fi
 export M2=$M2_HOME/bin
 export PATH=$M2:$JAVA_HOME/bin:$PATH
 
+#export MAVEN_OPTS=-Xmx2024m
 OPTS="-s $MSET --offline clean verify"
 OPTS="-s $MSET clean verify"
 
@@ -56,23 +57,23 @@ TOP=`pwd`
 # rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.log 4_applications.log 5_display_builder.log 6_sns.log
 
 # With download: Total time: 02:40 min
-#(cd diirt; time  mvn $OPTS ) 2>&1 | tee 0_diirt.log
+# (cd diirt; time  mvn $OPTS ) 2>&1 | tee 0_diirt.log
 
 # With download: Total time: 04:36 min
-#(cd maven-osgi-bundles; time  mvn $OPTS ) 2>&1 | tee 1_maven-osgi-bundles.log
+(cd maven-osgi-bundles; time  mvn $OPTS ) 2>&1 | tee 1_maven-osgi-bundles.log
 
 # With download: Total time: 03:00 min
-#(cd cs-studio-thirdparty; time  mvn $OPTS ) 2>&1 | tee 2_cs-studio-thirdparty.log
+(cd cs-studio-thirdparty; time  mvn $OPTS ) 2>&1 | tee 2_cs-studio-thirdparty.log
 
 # With download: Total time: 07:12 min
-#(cd cs-studio/core; time  mvn $OPTS ) 2>&1 | tee 3_core.log
+(cd cs-studio/core; time  mvn $OPTS ) 2>&1 | tee 3_core.log
 
 # With download: Total time: 12:24 min
-#(cd cs-studio/applications; time  mvn $OPTS ) 2>&1 | tee 4_applications.log
+(cd cs-studio/applications; time  mvn $OPTS ) 2>&1 | tee 4_applications.log
 
 # display.builder pom.xml looks for $CSS_REPO
-#CSS_REPO=file:$TOP/org.csstudio.sns/css_repo
-#(cd org.csstudio.display.builder; time mvn -s $MSET -Dcss_repo=$CSS_REPO clean verify ) | tee 5_display_builder.log
+CSS_REPO=file:$TOP/org.csstudio.sns/css_repo
+(cd org.csstudio.display.builder; time mvn -s $MSET -Dcss_repo=$CSS_REPO clean verify ) 2>&1 | tee 5_display_builder.log
 
 # With download: Total time: 09:28 min
 (cd org.csstudio.sns; time  mvn $OPTS ) 2>&1 | tee 6_sns.log
