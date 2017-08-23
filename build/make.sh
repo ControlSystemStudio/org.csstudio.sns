@@ -57,7 +57,7 @@ TOP=`pwd`
 # rm -f 0_diirt.log 1_maven-osgi-bundles.log 2_cs-studio-thirdparty.log  3_core.log 4_applications.log 5_display_builder.log 6_sns.log
 
 # With download: Total time: 02:40 min
-# (cd diirt; time  mvn $OPTS ) 2>&1 | tee 0_diirt.log
+(cd diirt; time  mvn $OPTS ) 2>&1 | tee 0_diirt.log
 
 # With download: Total time: 04:36 min
 (cd maven-osgi-bundles; time  mvn $OPTS ) 2>&1 | tee 1_maven-osgi-bundles.log
