@@ -90,6 +90,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
       <feature id="org.csstudio.sns.feature.snsapps"/>
       <feature id="org.csstudio.applications.opibuilder.feature"/>
       <feature id="org.csstudio.applications.opibuilder.edm.feature"/>
+      <feature id="org.csstudio.applications.opibuilder.medm.feature"/>
       <feature id="org.csstudio.display.builder.feature"/>
       <feature id="org.csstudio.trends.databrowser3.feature"/>
       <feature id="org.csstudio.trends.databrowser3.bobwidget.feature"/>
