@@ -149,6 +149,7 @@ Builds SNS products, place in local repo
               <archiveFileName>scan-server-${sns.version}</archiveFileName>
               <attachId>scan-server</attachId>
             </product>
+<!--
             <product>
               <id>pvtree</id>
               <rootFolder>pvtree-${sns.version}</rootFolder>
@@ -158,6 +159,7 @@ Builds SNS products, place in local repo
               <archiveFileName>pvtree-${sns.version}</archiveFileName>
               <attachId>pvtree</attachId>
             </product>
+-->
             <product>
               <id>org.csstudio.basic.epics.product.product</id>
               <rootFolder>basic-epics-${sns.version}</rootFolder>

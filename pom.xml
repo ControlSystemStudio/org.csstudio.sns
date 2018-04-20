@@ -33,13 +33,13 @@
     <tycho.version>1.0.0</tycho.version>
     <tycho-extras.version>${tycho.version}</tycho-extras.version>
 
-    <eclipse-site>http://download.eclipse.org/releases/neon</eclipse-site>
-    <eclipse-update-site>http://download.eclipse.org/eclipse/updates/4.6</eclipse-update-site>
+    <eclipse-site>http://download.eclipse.org/releases/oxygen</eclipse-site>
+    <eclipse-update-site>http://download.eclipse.org/eclipse/updates/4.7</eclipse-update-site>
     <efx-site>http://download.eclipse.org/efxclipse/runtime-released/2.4.0/site</efx-site>
     <!-- Neon.3: http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository
          results in dependencies to strange versions of org.eclipse.runtime and .osgi
       -->
-    <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository</orbit-site>
+    <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository</orbit-site>
 
     <pydev-site>https://dl.bintray.com/fabioz/pydev/5.7.0</pydev-site>
 
