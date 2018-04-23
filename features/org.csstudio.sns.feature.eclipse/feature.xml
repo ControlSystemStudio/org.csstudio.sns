@@ -58,8 +58,10 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
         files to run without further manual additions in the IDE.
         On the downside, updates to Eclipse will require including
         the feature for one maven build,
-        then then updating the specific plugin details from the
+        then updating the specific plugin details from the
         fx.target.rcp feature.
+ 
+        These are from org.eclipse.fx.target.rcp.feature_2.4.0.201605121035
      -->
    
   <plugin
