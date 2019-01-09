@@ -27,7 +27,7 @@ For details, see http://www.eclipse.org/legal/epl-v10.html
    </license>
 
    <url>
-      <update label="SNS CSS Update Site" url="http://ics-web.sns.ornl.gov/css/updates/"/>
+      <update label="SNS CSS Update Site" url="https://controlssoftware.sns.ornl.gov/css_rcp/updates/"/>
    </url>
 
    <plugin
