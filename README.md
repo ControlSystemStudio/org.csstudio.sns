@@ -1,7 +1,16 @@
 cs-studio-SNS
 =============
 
-SNS specific additions and build for CS-Studio
+`NOTE:`
+This repository was used for building the SNS specific version of CS-Studio based on Eclipse.
+In May 2019, SNS stopped working on the Eclipse-based CS-Studio
+and instead concentrated on the newer Phoebus-based CS-Studio,
+which offers several advantages, including a much simplified and faster build mechanism.
+
+See https://github.com/kasemir/phoebus-sns for the Phoebus-based replacement
+of this repository,
+https://controlssoftware.sns.ornl.gov/css_phoebus/ for binaries,
+https://github.com/ControlSystemStudio/phoebus for the common Phoebus repo.
 
 
 Example for compiling the SNS products
